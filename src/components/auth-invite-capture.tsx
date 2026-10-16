@@ -7,7 +7,8 @@ import { supabaseConfig } from "@/lib/supabase/config";
 export function AuthInviteCapture() {
   useEffect(() => {
     const fragment = new URLSearchParams(window.location.hash.slice(1));
-    if (fragment.get("type") !== "invite") return;
+    const type = fragment.get("type");
+    if (type !== "invite" && type !== "recovery") return;
 
     const config = supabaseConfig();
     if (!config) return;

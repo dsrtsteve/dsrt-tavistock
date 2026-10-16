@@ -7,7 +7,9 @@ export async function GET(request: NextRequest) {
   const type = request.nextUrl.searchParams.get("type");
   const failure = new URL("/admin/login?invite=invalid", request.url);
 
-  if (!tokenHash || type !== "invite") return NextResponse.redirect(failure);
+  if (!tokenHash || (type !== "invite" && type !== "recovery")) {
+    return NextResponse.redirect(failure);
+  }
 
   const supabase = await createServerSupabase();
   const { error } = await supabase.auth.verifyOtp({

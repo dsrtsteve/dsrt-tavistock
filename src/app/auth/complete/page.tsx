@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
-import { redirect } from "next/navigation";
 import { SetPasswordForm } from "@/components/admin/set-password-form";
-import { getAdmin } from "@/lib/auth";
 
 export const metadata = {
   title: "Set your password",
@@ -11,9 +9,7 @@ export const metadata = {
 };
 export const dynamic = "force-dynamic";
 
-export default async function CompleteInvitePage() {
-  if (!(await getAdmin())) redirect("/admin/login?invite=invalid");
-
+export default function CompleteInvitePage() {
   return (
     <section className="admin-login site-container">
       <div className="login-story">

@@ -1,16 +1,16 @@
 # Supabase and the team journal
 
-The app is connected to the **DSRT Tavistock** project in **Xium**, ref `bepsxdxhmtfxldoanvct`, region `eu-west-1`. The user created this project. No other project was modified.
+The app is connected to the **dsrt-tavistock** project (ref `dgxykwpcyjaavdrgdlqk`) in the user's **DSRT Tavistock** Supabase organization, region `eu-west-2` (London). The project was created on 2026-10-16.
 
-The production schema, four initial reports and admin membership have been applied. `.env.local` contains only the project URL, a publishable key and the local site origin; it is ignored by Git. Copy `.env.example` when configuring a different environment. The app never needs a secret/service-role key.
+The production schema, private image bucket and four starter reports are applied. The migration version `20261013134204` is recorded in the remote migration history. The WordPress export added 154 published reports; five drafts were excluded and four reports already covered by the starter seed were skipped. Imported HTML was converted to readable text; WordPress images were not copied. `.env.local` contains the project URL, publishable key and local site origin; it is ignored by Git. Copy `.env.example` when configuring a different environment. The app never needs a secret/service-role key.
 
 ## Admin access
 
-Open `/admin/login`. Accounts must be created through Supabase Authentication and explicitly granted admin membership; simply signing up or changing user metadata does not grant privileges. The first requested account has been provisioned. Passwords are managed in Supabase and were not read by this project.
+Open `/admin/login`. The first admin account has been invited and granted admin membership in this project. Accept the Supabase invitation and choose a password on `/auth/complete`; then sign in at `/admin/login`. Accounts must be created through Supabase Authentication and explicitly granted admin membership; simply signing up or changing user metadata does not grant privileges. Passwords are managed in Supabase and are never stored by the app.
 
 For another admin:
 
-1. In the project's Authentication → Users screen, create a user with a confirmed email. Give their password to them securely, outside source control.
+1. In the project's Authentication → Users screen, invite the user. They accept the invitation and choose their password on the app's `/auth/complete` page.
 2. Run this parameterised-by-email example in the project's SQL editor after replacing the placeholder:
 
 ```sql
@@ -67,6 +67,6 @@ npm run check:routes
 
 25 local integration checks passed: anonymous/member restrictions, user-metadata escalation denial, persisted drafts, publishing, unpublishing, image access, direct-route protection, cache headers, permanent URLs, optimistic concurrency, delete denial and immediate role revocation. Browser checks covered login errors, successful login, draft validation without data loss, upload, Markdown preview, saving/reloading, editing/publishing/unpublishing/archiving, responsive layout and copy-link feedback.
 
-Hosted verification confirmed the four published records, RLS on both tables, a private 5 MB image bucket, blocked anonymous admin-table access, and the requested admin membership. The hosted security advisor returned no issues. Performance advisories only noted the three new indexes as unused, expected on a newly seeded four-row table; retained for normal query growth ([advisor explanation](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index)).
+Hosted verification confirmed 158 published reports (four starter reports and 154 imported reports) in the new database. The production Vercel deployment reads the database and displays all 158 reports. The first admin invitation was sent and its Auth user was added to `admin_users`; finish password setup from the invitation email.
 
 Docs checked: [Supabase SSR](https://supabase.com/docs/guides/auth/server-side/nextjs), [storage access control](https://supabase.com/docs/guides/storage/security/access-control), the Supabase changelog, and the Next.js documentation bundled with this installation.

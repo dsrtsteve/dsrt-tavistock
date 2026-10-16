@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/site";
+import { AuthInviteCapture } from "@/components/auth-invite-capture";
 import "./globals.css";
 import "./journal.css";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en-GB" data-scroll-behavior="smooth">
       <body className={`${sans.variable} ${display.variable}`}>
+        <AuthInviteCapture />
         <Header />
         <main id="main-content" tabIndex={-1}>
           {children}

@@ -21,6 +21,58 @@ export function BlogBrowser({ posts }: { posts: BlogPost[] }) {
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
   );
+  const currentYear = new Date().getFullYear();
+  const years = [...new Set(results.map((post) => post.event_date.slice(0, 4)))].sort(
+    (a, b) => Number(b) - Number(a),
+  );
+
+  const renderStories = (year: string) => {
+    const yearPosts = results.filter((post) => post.event_date.startsWith(year));
+    return (
+      <div className="journal-grid">
+        {yearPosts.map((post, index) => (
+          <article
+            key={post.id}
+            className={`journal-card ${Number(year) === currentYear && index === 0 && !query && category === "All stories" ? "journal-featured" : ""}`}
+          >
+            <Link
+              href={`/blog/${post.slug}`}
+              className="journal-card-image"
+              aria-label={`Read ${post.title}`}
+            >
+              {post.cover_path ? (
+                <Image
+                  unoptimized
+                  width={1600}
+                  height={1067}
+                  src={mediaUrl(post.cover_path)}
+                  alt={post.cover_alt ?? ""}
+                />
+              ) : (
+                <Image
+                  src={index % 2 === 0 ? "/images/dartmoor-rescue-hero.webp" : "/images/team-training.webp"}
+                  alt="Illustration of rescue volunteers on Dartmoor, generated with AI"
+                  fill
+                  sizes="(max-width: 767px) 100vw, 50vw"
+                />
+              )}
+              <span className="journal-category">{post.category}</span>
+              {!post.cover_path && <span className="journal-image-credit">AI-generated illustration</span>}
+            </Link>
+            <div className="journal-card-copy">
+              <div className="journal-meta">
+                <time dateTime={post.event_date}>{postDate(post.event_date)}</time>
+                <span><Clock3 size={13} />{readingMinutes(post.body)} min read</span>
+              </div>
+              <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
+              <p>{post.excerpt}</p>
+              <Link href={`/blog/${post.slug}`} className="text-link">Read the story <ArrowUpRight size={18} /></Link>
+            </div>
+          </article>
+        ))}
+      </div>
+    );
+  };
   return (
     <>
       <div className="journal-tools">
@@ -50,67 +102,20 @@ export function BlogBrowser({ posts }: { posts: BlogPost[] }) {
         {results.length} {results.length === 1 ? "story" : "stories"} from the
         team
       </p>
-      <div className="journal-grid">
-        {results.map((post, index) => (
-          <article
-            key={post.id}
-            className={`journal-card ${index === 0 && !query && category === "All stories" ? "journal-featured" : ""}`}
-          >
-            <Link
-              href={`/blog/${post.slug}`}
-              className="journal-card-image"
-              aria-label={`Read ${post.title}`}
-            >
-              {post.cover_path ? (
-                <>
-                  <Image
-                    unoptimized
-                    width={1600}
-                    height={1067}
-                    src={mediaUrl(post.cover_path)}
-                    alt={post.cover_alt ?? ""}
-                  />
-                </>
-              ) : (
-                <Image
-                  src={
-                    index % 2 === 0
-                      ? "/images/dartmoor-rescue-hero.webp"
-                      : "/images/team-training.webp"
-                  }
-                  alt="Illustration of rescue volunteers on Dartmoor, generated with AI"
-                  fill
-                  sizes="(max-width: 767px) 100vw, 50vw"
-                />
-              )}
-              <span className="journal-category">{post.category}</span>
-              {!post.cover_path && (
-                <span className="journal-image-credit">
-                  AI-generated illustration
-                </span>
-              )}
-            </Link>
-            <div className="journal-card-copy">
-              <div className="journal-meta">
-                <time dateTime={post.event_date}>
-                  {postDate(post.event_date)}
-                </time>
-                <span>
-                  <Clock3 size={13} />
-                  {readingMinutes(post.body)} min read
-                </span>
-              </div>
-              <h2>
-                <Link href={`/blog/${post.slug}`}>{post.title}</Link>
-              </h2>
-              <p>{post.excerpt}</p>
-              <Link href={`/blog/${post.slug}`} className="text-link">
-                Read the story <ArrowUpRight size={18} />
-              </Link>
-            </div>
-          </article>
-        ))}
-      </div>
+      {years.map((year) => {
+        const yearPosts = results.filter((post) => post.event_date.startsWith(year));
+        return Number(year) === currentYear ? (
+          <section className="archive-year" key={year} aria-labelledby={`journal-${year}`}>
+            <h2 className="archive-year-title" id={`journal-${year}`}>{year} journal</h2>
+            {renderStories(year)}
+          </section>
+        ) : (
+          <details className="archive-year archive-year-details" key={year} open={!!query || category !== "All stories"}>
+            <summary>{year} journal <span>{yearPosts.length} {yearPosts.length === 1 ? "story" : "stories"}</span></summary>
+            {renderStories(year)}
+          </details>
+        );
+      })}
       {!results.length && (
         <div className="empty-state">
           <h2>

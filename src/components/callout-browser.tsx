@@ -20,6 +20,10 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
   );
+  const currentYear = new Date().getFullYear();
+  const years = [
+    ...new Set(results.map((post) => post.event_date.slice(0, 4))),
+  ].sort((a, b) => Number(b) - Number(a));
 
   return (
     <>
@@ -53,39 +57,71 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
         {results.length} {results.length === 1 ? "report" : "reports"}
       </p>
       {results.length ? (
-        <div className="callout-list">
-          {results.map((item) => (
-            <Link
-              className="callout-row"
-              href={`/blog/${item.slug}`}
-              key={item.id}
+        years.map((year) => {
+          const yearPosts = results.filter((post) => post.event_date.startsWith(year));
+          const list = (
+            <div className="callout-list">
+              {yearPosts.map((item) => (
+                <Link
+                  className="callout-row"
+                  href={`/blog/${item.slug}`}
+                  key={item.id}
+                >
+                  <div className="callout-date">
+                    <time dateTime={item.event_date}>
+                      {postDate(item.event_date)}
+                    </time>
+                    <span>
+                      {item.incident_number
+                        ? `INCIDENT ${item.incident_number}`
+                        : "RESCUE REPORT"}
+                    </span>
+                  </div>
+                  <div className="callout-row-content">
+                    <span className="callout-category">
+                      {item.rescue_type ?? "Rescue"}
+                    </span>
+                    <h3>{item.title}</h3>
+                    <span className="callout-place">
+                      <MapPin size={13} />
+                      {item.location}
+                    </span>
+                  </div>
+                  <span className="callout-read">
+                    Read report <ArrowUpRight size={20} />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          );
+
+          return Number(year) === currentYear ? (
+            <section
+              className="archive-year"
+              key={year}
+              aria-labelledby={`callouts-${year}`}
             >
-              <div className="callout-date">
-                <time dateTime={item.event_date}>
-                  {postDate(item.event_date)}
-                </time>
+              <h2 className="archive-year-title" id={`callouts-${year}`}>
+                {year} call-outs
+              </h2>
+              {list}
+            </section>
+          ) : (
+            <details
+              className="archive-year archive-year-details"
+              key={year}
+              open={!!query || category !== "All call-outs"}
+            >
+              <summary>
+                {year} call-outs
                 <span>
-                  {item.incident_number
-                    ? `INCIDENT ${item.incident_number}`
-                    : "RESCUE REPORT"}
+                  {yearPosts.length} {yearPosts.length === 1 ? "report" : "reports"}
                 </span>
-              </div>
-              <div className="callout-row-content">
-                <span className="callout-category">
-                  {item.rescue_type ?? "Rescue"}
-                </span>
-                <h3>{item.title}</h3>
-                <span className="callout-place">
-                  <MapPin size={13} />
-                  {item.location}
-                </span>
-              </div>
-              <span className="callout-read">
-                Read report <ArrowUpRight size={20} />
-              </span>
-            </Link>
-          ))}
-        </div>
+              </summary>
+              {list}
+            </details>
+          );
+        })
       ) : (
         <div className="empty-state">
           <h2>No matching call-outs</h2>

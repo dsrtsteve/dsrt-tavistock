@@ -145,7 +145,26 @@ export default async function ContentPage({ params }: Props) {
               <SkillIcon name={skill.icon} size={48} />
             </div>
             <h2>Specialist skills. Shared purpose.</h2>
-            <p>{skill.description}</p>
+            {skill.description.map((block, index) =>
+              block.type === "heading" ? (
+                <h3 key={index}>{block.text}</h3>
+              ) : block.type === "paragraph" ? (
+                <p key={index}>{block.text}</p>
+              ) : block.type === "list" ? (
+                <ul key={index}>
+                  {block.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p key={index}>
+                  {block.text}{" "}
+                  <a href={block.href} target="_blank" rel="noreferrer">
+                    {block.label}
+                  </a>
+                </p>
+              ),
+            )}
             <p>
               Every specialist is part of the wider rescue team. Regular
               training helps volunteers bring their skills together when a
@@ -664,7 +683,7 @@ export default async function ContentPage({ params }: Props) {
           </p>
           <figure className="photo-wide">
             <Image
-              src="/images/dartmoor-rescue-hero.webp"
+              src="/images/IMG_3686.jpg"
               alt="AI-generated illustration of Dartmoor moorland and rescue volunteers"
               fill
               sizes="(max-width: 767px) 100vw, 740px"

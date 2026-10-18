@@ -26,8 +26,8 @@ export default async function Home() {
     <>
       <section className="hero">
         <Image
-          src="/images/dartmoor-rescue-hero.webp"
-          alt="AI illustration of volunteer rescuers walking across open Dartmoor towards granite tors"
+          src="/images/stretcher-at-sunset.jpg"
+          alt="Volunteer rescuers walking across open Dartmoor towards a casualty"
           fill
           preload
           sizes="100vw"
@@ -70,7 +70,6 @@ export default async function Home() {
             <span>
               <MapPin size={13} /> DARTMOOR NATIONAL PARK, DEVON
             </span>
-            <small>AI-generated illustration</small>
           </div>
         </div>
       </section>

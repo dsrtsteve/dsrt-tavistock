@@ -38,14 +38,14 @@ export default async function LoginPage() {
             our team moving.
           </p>
         </div>
-        <span className="login-image-caption">AI-generated illustration</span>
+        <span className="login-image-caption">The Team on Leather tor</span>
       </div>
       <div className="login-panel">
         <Link href="/blog" className="admin-back">
           <ArrowLeft size={16} /> Back to the journal
         </Link>
         <Image
-          src="/images/dsrt-tavistock-official.png"
+          src="/images/team-on-leathertor.jpg"
           alt="DSRT Tavistock official logo"
           width={69}
           height={80}

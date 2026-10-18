@@ -529,7 +529,7 @@ h2 {
 }
 .mission-image > img {
   object-fit: cover;
-  object-position: 52% center;
+  object-position: left center;
 }
 .mission-image figcaption {
   position: absolute;
@@ -1162,6 +1162,49 @@ h2 {
   color: var(--muted);
   font-size: 11px;
   margin-bottom: 17px;
+}
+.archive-year + .archive-year {
+  margin-top: 44px;
+}
+.archive-year-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin-bottom: 18px;
+}
+.archive-year-details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-block: 1px solid var(--line);
+  color: var(--forest);
+  font-size: 18px;
+  font-weight: 550;
+  list-style: none;
+}
+.archive-year-details > summary::-webkit-details-marker {
+  display: none;
+}
+.archive-year-details > summary::after {
+  content: "+";
+  color: var(--red);
+  font-size: 22px;
+}
+.archive-year-details[open] > summary::after {
+  content: "−";
+}
+.archive-year-details > summary span {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+.archive-year-details > .callout-list,
+.archive-year-details > .journal-grid {
+  margin-top: 20px;
 }
 .empty-state {
   padding: 60px 25px;

@@ -106,7 +106,7 @@ export function Mission({ extended = false }: { extended?: boolean }) {
       </div>
       <figure className="mission-image">
         <Image
-          src="/images/team-training.webp"
+          src="/images/team-on-leathertor.jpg"
           alt="AI illustration of four rescue volunteers planning a route together on Dartmoor"
           fill
           sizes="(max-width: 767px) 100vw, 50vw"
@@ -115,7 +115,7 @@ export function Mission({ extended = false }: { extended?: boolean }) {
           <span>
             <span className="live-dot" /> UNITED BY PURPOSE
           </span>
-          <span>AI-generated illustration</span>
+          <span>The Team on Leather tor</span>
         </figcaption>
         <div className="image-stamp">
           <Image
@@ -277,8 +277,8 @@ export function PageIntro({
       {image && (
         <>
           <Image
-            src="/images/dartmoor-rescue-hero.webp"
-            alt="AI illustration of a rescue team crossing Dartmoor"
+            src="/images/wide_dartmoor.jpg"
+            alt="The rescue team on Dartmoor"
             fill
             sizes="100vw"
             preload
@@ -295,7 +295,7 @@ export function PageIntro({
         <p>{description}</p>
       </div>
       {image && (
-        <span className="intro-image-credit">AI-generated illustration</span>
+        <span className="intro-image-credit">The team out on Dartmoor</span>
       )}
     </section>
   );

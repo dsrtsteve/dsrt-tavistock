@@ -8,7 +8,12 @@ export function AuthInviteCapture() {
   useEffect(() => {
     const fragment = new URLSearchParams(window.location.hash.slice(1));
     const type = fragment.get("type");
-    if (type !== "invite" && type !== "recovery") return;
+    // Supabase's implicit flow returns type in the fragment; PKCE returns a
+    // one-time code in the query string. Handle both callback shapes.
+    const hasAuthCode = new URLSearchParams(window.location.search).has("code");
+    const hasAuthError = new URLSearchParams(window.location.search).has("error_code");
+    if (type !== "invite" && type !== "recovery" && !hasAuthCode && !hasAuthError)
+      return;
 
     const config = supabaseConfig();
     if (!config) return;
@@ -19,7 +24,7 @@ export function AuthInviteCapture() {
       if (cancelled) return;
       window.history.replaceState(null, document.title, window.location.pathname);
       window.location.replace(
-        error || !data.session
+        hasAuthError || error || !data.session
           ? "/admin/login?invite=invalid"
           : "/auth/complete",
       );

@@ -15,13 +15,13 @@ import {
   SupportBanner,
   TextLink,
 } from "@/components/site";
-import { getPublishedPosts } from "@/lib/posts";
+import { getPublishedCallouts } from "@/lib/posts";
 import { postDate } from "@/lib/post-utils";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const callouts = await getPublishedPosts("Rescue");
+  const callouts = await getPublishedCallouts();
   return (
     <>
       <section className="hero">
@@ -107,7 +107,7 @@ export default async function Home() {
               </div>
               <div className="callout-row-content">
                 <span className="callout-category">
-                  {item.rescue_type ?? item.category}
+                  {item.category}
                 </span>
                 <h3>{item.title}</h3>
                 <span className="callout-place">

@@ -15,7 +15,7 @@ create table public.blog_posts (
   title text not null check (length(trim(title)) between 3 and 160),
   excerpt text not null check (length(trim(excerpt)) between 10 and 350),
   body text not null check (length(trim(body)) between 20 and 100000),
-  category text not null default 'Rescue' check (category in ('Rescue', 'Training', 'Community', 'Team news')),
+  category text not null default 'Rescue' check (category in ('Rescue', 'Search', 'Incident', 'Training', 'Community', 'Team News', 'Fundraising')),
   status text not null default 'draft' check (status in ('draft', 'published', 'archived')),
   event_date date not null default current_date,
   location text check (length(location) <= 150),

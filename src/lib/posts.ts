@@ -2,6 +2,7 @@ import "server-only";
 import { cache } from "react";
 import { createPublicSupabase } from "./supabase/server";
 import type { BlogPost, PostCategory } from "./supabase/database.types";
+import { calloutCategories, journalCategories } from "./post-utils";
 import { callouts } from "./content";
 
 // Preserve the original preview when no backend has been configured at all.
@@ -12,7 +13,7 @@ const archivePosts: BlogPost[] = callouts.map((item) => ({
   title: item.title,
   excerpt: item.summary,
   body: item.detail,
-  category: "Rescue",
+  category: "Incident",
   status: "published",
   event_date: item.date,
   location: item.location,
@@ -44,6 +45,35 @@ export const getPublishedPosts = cache(async (category?: PostCategory) => {
     throw new Error(
       "The journal could not be loaded. Please try again shortly.",
     );
+  return data;
+});
+
+export const getPublishedCallouts = cache(async () => {
+  const client = createPublicSupabase();
+  if (!client) return archivePosts;
+  const { data, error } = await client
+    .from("blog_posts")
+    .select("*")
+    .eq("status", "published")
+    .in("category", [...calloutCategories])
+    .order("event_date", { ascending: false })
+    .order("created_at", { ascending: false });
+  if (error) throw new Error("The call-outs could not be loaded. Please try again shortly.");
+  return data;
+});
+
+export const getPublishedJournalPosts = cache(async () => {
+  const client = createPublicSupabase();
+  if (!client)
+    return archivePosts.filter((post) => journalCategories.includes(post.category as (typeof journalCategories)[number]));
+  const { data, error } = await client
+    .from("blog_posts")
+    .select("*")
+    .eq("status", "published")
+    .in("category", [...journalCategories])
+    .order("event_date", { ascending: false })
+    .order("created_at", { ascending: false });
+  if (error) throw new Error("The journal could not be loaded. Please try again shortly.");
   return data;
 });
 

@@ -1,9 +1,11 @@
-export const categories = [
-  "Rescue",
+export const calloutCategories = ["Rescue", "Search", "Incident"] as const;
+export const journalCategories = [
   "Training",
   "Community",
-  "Team news",
+  "Team News",
+  "Fundraising",
 ] as const;
+export const categories = [...calloutCategories, ...journalCategories] as const;
 export const postDate = (date: string) =>
   new Intl.DateTimeFormat("en-GB", {
     day: "numeric",

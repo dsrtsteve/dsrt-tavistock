@@ -336,7 +336,7 @@ h2 {
 .hero {
   position: relative;
   isolation: isolate;
-  margin: 0 18px;
+  margin: 0;
   min-height: 642px;
   overflow: hidden;
   color: white;
@@ -344,7 +344,8 @@ h2 {
 }
 .hero-image {
   object-fit: cover;
-  object-position: 62% 55%;
+  object-position: 62% 63%;
+  transform: scale(1.06);
   z-index: -3;
 }
 .hero-shade {
@@ -1495,11 +1496,11 @@ h2 {
     height: 41px;
   }
   .hero {
-    margin-inline: 9px;
+    margin-inline: 0;
     min-height: 635px;
   }
   .hero-image {
-    object-position: 85% center;
+    object-position: 85% 63%;
   }
   .hero-shade {
     background:

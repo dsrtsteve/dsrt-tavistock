@@ -13,7 +13,7 @@ import {
   Send,
 } from "lucide-react";
 import { savePost, uploadCover, type FormState } from "@/app/admin/actions";
-import { categories, mediaUrl, slugify } from "@/lib/post-utils";
+import { categories, calloutCategories, mediaUrl, slugify } from "@/lib/post-utils";
 import type { BlogPost } from "@/lib/supabase/database.types";
 import { PostBody } from "@/components/post-body";
 
@@ -337,7 +337,7 @@ export function PostEditor({
                 placeholder="e.g. Beardown Tor"
               />
             </label>
-            {category === "Rescue" && (
+            {calloutCategories.includes(category as (typeof calloutCategories)[number]) && (
               <>
                 <label htmlFor="incident">
                   Incident number <span>(optional)</span>
@@ -378,8 +378,8 @@ export function PostEditor({
           <section className="editor-card publish-card">
             <h2>Ready when you are.</h2>
             <p>
-              Save a draft for the team, or publish it to the journal. Rescue
-              posts also appear in Call-outs.
+              Call-outs appear on the Call-outs page. Training, community, team
+              news and fundraising updates appear in the journal.
             </p>
             <button
               className="button button-red"

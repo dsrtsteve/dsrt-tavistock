@@ -499,8 +499,8 @@ export default async function ContentPage({ params }: Props) {
               and raise funds for the team.
             </p>
             <p>
-              The 2026 event was scheduled for 19 September, with approximately
-              5, 11 and 16 mile route options. That date has now passed.
+              The 2026 event on 19 September, was a great success raising vital 
+              funds for the team. 
             </p>
             <p>
               For information about future events, contact the organisers. We’ll
@@ -553,7 +553,7 @@ export default async function ContentPage({ params }: Props) {
                 written by a life member with 36 years of service.
               </p>
               <p>
-                The published price is £15. Contact the team to confirm
+                The published price is £10. Contact the team to confirm
                 availability and arrange a purchase.
               </p>
               <a
@@ -604,9 +604,8 @@ export default async function ContentPage({ params }: Props) {
         <section className="site-container section-space privacy-content prose">
           <h2>About this preview</h2>
           <p>
-            This is a local website redesign based on the publicly available
-            DSRT Tavistock website. Content was reviewed on 13 October 2026. It
-            is not a live operational service or a real-time incident feed.
+            This is a local website built to showcase the DSRT
+            Tavistock Team. Content was reviewed on 13 October 2026.
           </p>
           <h3>Your information</h3>
           <p>
@@ -620,10 +619,8 @@ export default async function ContentPage({ params }: Props) {
           </p>
           <h3>Images and brand</h3>
           <p>
-            The Dartmoor landscape and team training images were created with AI
-            to illustrate the team’s purpose. They do not depict actual team
-            members or documented incidents. Image captions identify them as
-            illustrations.
+            The Dartmoor landscape and team training images are all images owned
+            by the team, taken during training or on live callouts.
           </p>
           <p>
             The official Mountain Rescue England and Wales — DSRT Tavistock logo
@@ -632,7 +629,6 @@ export default async function ContentPage({ params }: Props) {
           </p>
           <h3>Content and links</h3>
           <p>
-            Incident summaries link to their original published reports.
             Recruitment and event details reflect the reviewed source
             information; please contact the team for current availability.
           </p>
@@ -643,12 +639,12 @@ export default async function ContentPage({ params }: Props) {
           </p>
           <figure className="photo-wide">
             <Image
-              src="/images/IMG_3686.jpg"
+              src="/images/team-on-leathertor.jpg"
               alt="AI-generated illustration of Dartmoor moorland and rescue volunteers"
               fill
               sizes="(max-width: 767px) 100vw, 740px"
             />
-            <figcaption>AI-generated illustration</figcaption>
+            <figcaption>The team on Leather tor</figcaption>
           </figure>
         </section>
       </>

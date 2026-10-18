@@ -1,4 +1,11 @@
-export type PostCategory = "Rescue" | "Training" | "Community" | "Team news";
+export type PostCategory =
+  | "Rescue"
+  | "Search"
+  | "Incident"
+  | "Training"
+  | "Community"
+  | "Team News"
+  | "Fundraising";
 export type PostStatus = "draft" | "published" | "archived";
 
 export type BlogPost = {

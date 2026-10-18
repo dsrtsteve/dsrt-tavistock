@@ -6,21 +6,24 @@ import { PostBody } from "./post-body";
 import { Eyebrow, SupportBanner } from "./site";
 import { mediaUrl, postDate, readingMinutes } from "@/lib/post-utils";
 import type { BlogPost } from "@/lib/supabase/database.types";
+import { calloutCategories } from "@/lib/post-utils";
 
 export function PostArticle({ post }: { post: BlogPost }) {
+  const isCallout = calloutCategories.includes(
+    post.category as (typeof calloutCategories)[number],
+  );
+  const listingPath = isCallout ? "/call-outs" : "/blog";
   return (
     <>
       <header className="post-header">
         <div className="site-container">
-          <Link href="/blog" className="admin-back">
-            <ArrowLeft size={15} /> Back to the journal
+          <Link href={listingPath} className="admin-back">
+            <ArrowLeft size={15} /> Back to {isCallout ? "call-outs" : "the journal"}
           </Link>
           <div className="post-header-grid">
             <div>
               <Eyebrow>
-                {post.category === "Rescue"
-                  ? "FROM THE CALL-OUT LOG"
-                  : post.category}
+                {isCallout ? "FROM THE CALL-OUT LOG" : post.category}
               </Eyebrow>
               <h1>{post.title}</h1>
               <p>{post.excerpt}</p>
@@ -85,21 +88,9 @@ export function PostArticle({ post }: { post: BlogPost }) {
             </div>
           )}
           <PostBody body={post.body} />
-          {post.source_url && (
-            <p className="post-source">
-              Based on the team’s published report.{" "}
-              <a
-                href={post.source_url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Read the original <ArrowUpRight size={13} />
-              </a>
-            </p>
-          )}
           <BlogShare title={post.title} />
-          <Link href="/blog" className="text-link">
-            <ArrowLeft size={17} /> More from the team
+          <Link href={listingPath} className="text-link">
+            <ArrowLeft size={17} /> {isCallout ? "More call-outs" : "More from the team"}
           </Link>
         </div>
         <aside className="post-aside">

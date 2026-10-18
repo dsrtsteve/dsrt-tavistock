@@ -6,7 +6,7 @@ import { randomUUID } from "node:crypto";
 import { getAdmin, requireAdmin } from "@/lib/auth";
 import { createServerSupabase } from "@/lib/supabase/server";
 import { supabaseConfig } from "@/lib/supabase/config";
-import { categories } from "@/lib/post-utils";
+import { categories, calloutCategories } from "@/lib/post-utils";
 import type {
   BlogPost,
   PostCategory,
@@ -164,9 +164,9 @@ export async function savePost(
     status: status as PostStatus,
     event_date: eventDate,
     location: location || null,
-    rescue_type: category === "Rescue" ? rescueType || null : null,
+    rescue_type: calloutCategories.includes(category as (typeof calloutCategories)[number]) ? rescueType || null : null,
     incident_number:
-      category === "Rescue" && incident ? Number(incident) : null,
+      calloutCategories.includes(category as (typeof calloutCategories)[number]) && incident ? Number(incident) : null,
     source_url: sourceUrl || null,
     cover_path: coverPath || null,
     cover_alt: coverPath ? coverAlt : null,

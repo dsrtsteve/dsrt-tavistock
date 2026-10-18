@@ -1,10 +1,10 @@
 import { CalloutBrowser } from "@/components/callout-browser";
 import { PageIntro, SupportBanner } from "@/components/site";
-import { getPublishedPosts } from "@/lib/posts";
+import { getPublishedCallouts } from "@/lib/posts";
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Call-outs" };
 export default async function CalloutsPage() {
-  const posts = await getPublishedPosts("Rescue");
+  const posts = await getPublishedCallouts();
   return (
     <>
       <PageIntro

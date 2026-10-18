@@ -5,17 +5,15 @@ import { useState } from "react";
 import { ArrowUpRight, MapPin, Search } from "lucide-react";
 import type { BlogPost } from "@/lib/supabase/database.types";
 import { postDate } from "@/lib/post-utils";
+import { calloutCategories } from "@/lib/post-utils";
 
 export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
-  const filters = [
-    "All call-outs",
-    ...new Set(posts.map((p) => p.rescue_type).filter((v): v is string => !!v)),
-  ];
+  const filters = ["All call-outs", ...calloutCategories];
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All call-outs");
   const results = posts.filter(
     (item) =>
-      (category === "All call-outs" || item.rescue_type === category) &&
+      (category === "All call-outs" || item.category === category) &&
       `${item.title} ${item.location ?? ""} ${item.excerpt} ${item.incident_number ?? ""} ${postDate(item.event_date)}`
         .toLowerCase()
         .includes(query.trim().toLowerCase()),
@@ -79,7 +77,7 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
                   </div>
                   <div className="callout-row-content">
                     <span className="callout-category">
-                      {item.rescue_type ?? "Rescue"}
+                      {item.category}
                     </span>
                     <h3>{item.title}</h3>
                     <span className="callout-place">

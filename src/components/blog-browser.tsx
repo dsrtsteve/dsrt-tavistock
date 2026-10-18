@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight, Clock3, Search } from "lucide-react";
 import {
-  categories,
+  journalCategories,
   mediaUrl,
   postDate,
   readingMinutes,
@@ -77,7 +77,7 @@ export function BlogBrowser({ posts }: { posts: BlogPost[] }) {
     <>
       <div className="journal-tools">
         <div className="filter-buttons" aria-label="Filter stories by category">
-          {["All stories", ...categories].map((c) => (
+          {["All stories", ...journalCategories].map((c) => (
             <button
               key={c}
               aria-pressed={c === category}

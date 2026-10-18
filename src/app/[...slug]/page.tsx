@@ -24,7 +24,13 @@ import {
   SupportBanner,
   TextLink,
 } from "@/components/site";
-import { donationUrl, skills, sourceUrl } from "@/lib/content";
+import {
+  donationUrl,
+  joinUsContent,
+  skills,
+  sourceUrl,
+  supportersTeamContent,
+} from "@/lib/content";
 
 const titles: Record<string, string> = {
   about: "Our team",
@@ -55,18 +61,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: title ?? "Page not found" };
 }
 
-function SourceNote({ path }: { path: string }) {
-  return (
-    <p className="archive-note">
-      Based on the team’s{" "}
-      <a href={`${sourceUrl}/${path}/`} target="_blank" rel="noreferrer">
-        published information
-      </a>
-      , checked 13 October 2026.
-    </p>
-  );
-}
-
 export default async function ContentPage({ params }: Props) {
   const { slug } = await params;
   const path = slug.join("/");
@@ -94,7 +88,6 @@ export default async function ContentPage({ params }: Props) {
               alongside ambulance crews, police, Air Ambulance, HM Coastguard,
               fire and rescue services, and neighbouring rescue teams.
             </p>
-            <SourceNote path="about" />
           </div>
           <aside className="panel">
             <Eyebrow>EVERY MEMBER A VOLUNTEER</Eyebrow>
@@ -121,9 +114,6 @@ export default async function ContentPage({ params }: Props) {
           description="Rescue takes a whole team. Our volunteers train in navigation, communications and search, with specialists ready for the challenges beyond."
         />
         <SkillsSection full />
-        <div className="site-container py-12">
-          <SourceNote path="team-skills" />
-        </div>
         <SupportBanner />
       </>
     );
@@ -171,7 +161,6 @@ export default async function ContentPage({ params }: Props) {
               call-out takes them into challenging terrain.
             </p>
             <TextLink href="/team-skills">Explore all team skills</TextLink>
-            <SourceNote path="team-skills" />
           </div>
           <aside className="panel">
             <Eyebrow>HELP US STAY READY</Eyebrow>
@@ -298,7 +287,6 @@ export default async function ContentPage({ params }: Props) {
                 </div>
               </div>
             </div>
-            <SourceNote path="support-us/donate" />
           </div>
           <aside className="panel donation-panel">
             <ShieldCheck size={34} strokeWidth={1.5} className="text-forest" />
@@ -328,58 +316,39 @@ export default async function ContentPage({ params }: Props) {
     return (
       <>
         <PageIntro
-          eyebrow="Join the team"
-          title={"Your skills.\nSomeone’s second chance."}
-          description="Love Dartmoor? Confident on the hill? Turn your outdoor experience into something that makes a difference."
+          {...joinUsContent.intro}
           image
         />
         <section className="site-container section-space content-grid">
           <div className="prose">
-            <h2>Becoming a hill party member.</h2>
-            <p>
-              Applicants should be at least 18, live or work within about 30
-              minutes of Tavistock, and have transport for training and
-              call-outs.
-            </p>
+            <h2>{joinUsContent.heading}</h2>
+            <p>{joinUsContent.introduction}</p>
             <ul>
-              <li>Good fitness for extended call-outs in difficult weather.</li>
-              <li>
-                Confidence with a map and compass and knowledge of western
-                Dartmoor.
-              </li>
-              <li>The ability to work well with others.</li>
-              <li>
-                Time for at least 18 training sessions a year, plus fundraising
-                and events.
-              </li>
+              {joinUsContent.criteria.map((criterion) => (
+                <li key={criterion}>{criterion}</li>
+              ))}
             </ul>
-            <p>
-              Training typically takes around a year and includes navigation,
-              medical care, communications, rescue techniques and assessment.
-            </p>
+            <p>{joinUsContent.training}</p>
+            <h2>{joinUsContent.recruitmentHeading}</h2>
+            <p>{joinUsContent.recruitment}</p>
+            <p>{joinUsContent.recruitmentDay}</p>
             <TextLink href="/support-us/supporters-team">
-              Explore the Supporters Team
+              {joinUsContent.supportersLink}
             </TextLink>
-            <SourceNote path="support-us/join-us" />
           </div>
           <aside className="panel">
-            <Eyebrow>NEXT CHAPTER · JANUARY 2027</Eyebrow>
-            <h2>Register your interest.</h2>
-            <p>
-              The published recruitment page says the 2026 intake is closed.
-              Contact the training officer about joining as a trainee in January
-              2027.
-            </p>
+            <Eyebrow>{joinUsContent.application.eyebrow}</Eyebrow>
+            <h2>{joinUsContent.application.heading}</h2>
+            <p>{joinUsContent.application.description}</p>
             <a
-              href="mailto:trainingofficer@dsrt-tavistock.org.uk?subject=Interest%20in%20January%202027%20trainee%20intake"
+              href={joinUsContent.application.href}
+              target="_blank"
+              rel="noreferrer"
               className="button button-red"
             >
-              Email the training officer <ArrowUpRight size={17} />
+              {joinUsContent.application.label} <ArrowUpRight size={17} />
             </a>
-            <p className="panel-note">
-              The training officer can confirm current availability and the next
-              steps.
-            </p>
+            <p className="panel-note">{joinUsContent.application.note}</p>
           </aside>
         </section>
       </>
@@ -389,42 +358,36 @@ export default async function ContentPage({ params }: Props) {
     return (
       <>
         <PageIntro
-          eyebrow="Supporters team"
-          title="There’s a place for you."
-          description="You don’t need to join the call-out list to be an essential part of the team."
+          {...supportersTeamContent.intro}
         />
         <section className="site-container section-space content-grid">
           <div className="prose">
-            <h2>Help the people who help.</h2>
-            <p>
-              Our Supporters Team gives operational volunteers more time for
-              training and rescue. Everyone volunteers, bringing their own
-              energy, experience and ideas.
-            </p>
+            <h2>{supportersTeamContent.heading}</h2>
+            <p>{supportersTeamContent.introduction}</p>
             <ul>
-              <li>Help run community displays and fundraising days.</li>
-              <li>Organise events and raise awareness locally.</li>
-              <li>Support training exercises by playing a casualty.</li>
-              <li>Help sell team merchandise and support fundraising.</li>
+              {supportersTeamContent.activities.map((activity) => (
+                <li key={activity}>{activity}</li>
+              ))}
             </ul>
-            <p>
-              If you live nearby, love Dartmoor and have time to give, we’d love
-              to hear from you.
-            </p>
-            <SourceNote path="support-us/supporters-team" />
+            <h2>{supportersTeamContent.suitabilityHeading}</h2>
+            <p>{supportersTeamContent.suitabilityIntroduction}</p>
+            <ul>
+              {supportersTeamContent.suitability.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p>{supportersTeamContent.welcome}</p>
+            <p>{supportersTeamContent.invitation}</p>
           </div>
           <aside className="panel">
             <Users size={34} strokeWidth={1.5} />
-            <h2>Start with a conversation.</h2>
-            <p>
-              Tell us a little about yourself, your interests and the time you
-              can offer.
-            </p>
+            <h2>{supportersTeamContent.contact.heading}</h2>
+            <p>{supportersTeamContent.contact.description}</p>
             <a
-              href="mailto:fundraising@dsrt-tavistock.org.uk?subject=Supporters%20Team%20enquiry"
+              href={supportersTeamContent.contact.href}
               className="button button-red"
             >
-              Contact the supporters team <ArrowUpRight size={17} />
+              {supportersTeamContent.contact.label} <ArrowUpRight size={17} />
             </a>
           </aside>
         </section>
@@ -515,7 +478,6 @@ export default async function ContentPage({ params }: Props) {
               </p>
             </aside>
           </div>
-          <SourceNote path="contact" />
         </section>
       </>
     );
@@ -544,7 +506,6 @@ export default async function ContentPage({ params }: Props) {
               For information about future events, contact the organisers. We’ll
               only list a new date once it has been confirmed by the team.
             </p>
-            <SourceNote path="11tors" />
           </div>
           <aside className="panel">
             <CalendarDays size={32} strokeWidth={1.5} />
@@ -628,7 +589,6 @@ export default async function ContentPage({ params }: Props) {
               </a>
             </article>
           </div>
-          <SourceNote path="the-meavy-book-by-peter-swaine" />
         </section>
       </>
     );

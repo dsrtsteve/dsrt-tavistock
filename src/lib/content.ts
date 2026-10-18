@@ -3,6 +3,84 @@ export const donationUrl =
   "https://www.justgiving.com/charity/dartmooresearchandrescue";
 export const sourceUrl = "https://dsrt-tavistock.org.uk";
 
+export const joinUsContent = {
+  intro: {
+    eyebrow: "Join the team",
+    title: "Your skills.\nSomeone’s second chance.",
+    description:
+      "Love Dartmoor? Confident on the hill? Turn your outdoor experience into something that makes a difference.",
+  },
+  heading: "Becoming a hill party member.",
+  introduction:
+    "If you’re a competent hill walker with good local knowledge, a love of Dartmoor and a strong desire to help people, we’d like to hear from you. Applicants must be at least 18 and should meet the following criteria:",
+  criteria: [
+    "Live or work within a 30-minute drive of Tavistock, with access to transport for training and call-outs.",
+    "Have the physical and mental fitness to cope with extended call-outs in challenging weather on Dartmoor.",
+    "Work well as part of a team.",
+    "Have a basic ability to navigate with a map and compass.",
+    "Have good local knowledge, particularly of western Dartmoor.",
+    "Ideally, bring other useful skills such as first aid, working at height or off-road driving.",
+    "Commit to at least 18 training sessions each year, plus fundraising and other events.",
+  ],
+  training:
+    "Trainee training takes approximately a year. It covers navigation, first aid, communications, technical rope and water rescue, welfare, working with search dogs and other agencies, searching and vehicles. Once they have gained sufficient training and experience, trainees are invited to a Final Assessment to demonstrate their competence in the skills they’ve learned. Successful candidates become badged Hill Party Members (HPMs).",
+  recruitmentHeading: "Recruitment for the 2027 intake.",
+  recruitment:
+    "We are now recruiting for our next intake of Trainee HPMs in 2027. Applications close on 31 October 2026. After the closing date, we’ll select candidates for a recruitment day based solely on the information in their application. Please take time to include as much relevant information as possible. Successful candidates at this stage will receive an invitation by email in early November 2026.",
+  recruitmentDay:
+    "The recruitment day will take place on Saturday 21 November 2026, from 10:00 to 16:00. Successful candidates will start training in January 2027. The invitation email will include details of the day.",
+  supportersLink: "Explore the Supporters Team",
+  application: {
+    eyebrow: "2027 TRAINEE INTAKE",
+    heading: "Apply to join the team.",
+    description:
+      "Complete the application form by 31 October 2026. Your application is the basis for selecting candidates to attend the recruitment day.",
+    label: "DSRT-T Application Form",
+    href: "https://forms.gle/ZTdAKfAeaRtgygyC6",
+    note: "The recruitment day is Saturday 21 November 2026. Training for successful candidates begins in January 2027.",
+  },
+};
+
+export const supportersTeamContent = {
+  intro: {
+    eyebrow: "Supporters team",
+    title: "There’s a place for you.",
+    description:
+      "You don’t need to join the call-out list to be an essential part of the team.",
+  },
+  heading: "The support arm of the team.",
+  introduction:
+    "DSRT – Tavistock Supporters Team is the support arm of DSRT – Tavistock, where everyone is a volunteer. The team provides much-needed assistance for the operational team and relieves call-out members of the time pressure of carrying out support and fundraising tasks. Supporters are very much part of Dartmoor Search and Rescue Team – Tavistock.",
+  activities: [
+    "Fundraising days.",
+    "Organising fundraising events.",
+    "Manning the DSRT – Tavistock display stand at community events.",
+    "Being ‘casualties’ for exercises.",
+    "Selling team merchandise.",
+  ],
+  suitabilityHeading: "Got what it takes?",
+  suitabilityIntroduction: "Do you:",
+  suitability: [
+    "Live near Tavistock and have some spare time?",
+    "Love Dartmoor?",
+    "Want to be part of Dartmoor Search and Rescue, but not be on the call-out list?",
+    "Want to be part of a social group of like-minded people?",
+    "Want to help fellow volunteers save lives and help those in need?",
+    "Want to be trained in Basic Life Support?",
+    "Have any skills that would benefit the team?",
+  ],
+  welcome:
+    "Once accepted as a Supporter, you will receive a badged jacket, metal pin badge and grateful thanks from lots of people.",
+  invitation:
+    "If you think you have the time, enthusiasm and skills to help DSRT – Tavistock, then we’d very much like to hear from you.",
+  contact: {
+    heading: "Start with a conversation.",
+    description: "Tell us a little about yourself, your interests and the time you can offer.",
+    label: "Contact the supporters team",
+    href: "mailto:fundraising@dsrt-tavistock.org.uk?subject=Supporters%20Team%20enquiry",
+  },
+};
+
 export const callouts = [
   {
     id: 31,

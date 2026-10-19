@@ -1,11 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight, MapPin, Search } from "lucide-react";
 import type { BlogPost } from "@/lib/supabase/database.types";
-import { postDate } from "@/lib/post-utils";
-import { calloutCategories } from "@/lib/post-utils";
+import { calloutCategories, mediaUrl, postDate } from "@/lib/post-utils";
 
 export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
   const filters = ["All call-outs", ...calloutCategories];
@@ -75,6 +75,27 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
                         : "RESCUE REPORT"}
                     </span>
                   </div>
+                  <span className="callout-thumbnail">
+                    {item.cover_path ? (
+                      <Image
+                        unoptimized
+                        src={mediaUrl(item.cover_path)}
+                        alt={item.cover_alt ?? ""}
+                        fill
+                        sizes="(max-width: 767px) 56px, 112px"
+                      />
+                    ) : (
+                      <>
+                        <Image
+                          src="/images/dartmoor-rescue-hero.webp"
+                          alt=""
+                          fill
+                          sizes="(max-width: 767px) 56px, 112px"
+                        />
+                        <span>Illustration</span>
+                      </>
+                    )}
+                  </span>
                   <div className="callout-row-content">
                     <span className="callout-category">
                       {item.category}

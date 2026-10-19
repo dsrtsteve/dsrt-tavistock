@@ -25,6 +25,7 @@ import {
   TextLink,
 } from "@/components/site";
 import {
+  aboutContent,
   donationUrl,
   joinUsContent,
   skills,
@@ -78,16 +79,14 @@ export default async function ContentPage({ params }: Props) {
         <Mission extended />
         <section className="site-container content-grid pb-20">
           <div className="prose">
-            <h2>Part of something bigger.</h2>
-            <p>
-              We’re one of four Dartmoor teams, part of the Peninsular Mountain
-              and Cave Rescue Association and Mountain Rescue England and Wales.
-            </p>
-            <p>
-              Police initiate our call-outs. Depending on the incident, we work
-              alongside ambulance crews, police, Air Ambulance, HM Coastguard,
-              fire and rescue services, and neighbouring rescue teams.
-            </p>
+            {aboutContent.map((section) => (
+              <section key={section.heading}>
+                <h2>{section.heading}</h2>
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </section>
+            ))}
           </div>
           <aside className="panel">
             <Eyebrow>EVERY MEMBER A VOLUNTEER</Eyebrow>

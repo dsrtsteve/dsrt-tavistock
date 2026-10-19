@@ -16,7 +16,7 @@ import {
   TextLink,
 } from "@/components/site";
 import { getPublishedCallouts } from "@/lib/posts";
-import { postDate } from "@/lib/post-utils";
+import { mediaUrl, postDate } from "@/lib/post-utils";
 
 export const dynamic = "force-dynamic";
 
@@ -105,6 +105,27 @@ export default async function Home() {
                     : "RESCUE REPORT"}
                 </span>
               </div>
+              <span className="callout-thumbnail">
+                {item.cover_path ? (
+                  <Image
+                    unoptimized
+                    src={mediaUrl(item.cover_path)}
+                    alt={item.cover_alt ?? ""}
+                    fill
+                    sizes="(max-width: 767px) 56px, 112px"
+                  />
+                ) : (
+                  <>
+                    <Image
+                      src="/images/dartmoor-rescue-hero.webp"
+                      alt=""
+                      fill
+                      sizes="(max-width: 767px) 56px, 112px"
+                    />
+                    <span>Illustration</span>
+                  </>
+                )}
+              </span>
               <div className="callout-row-content">
                 <span className="callout-category">
                   {item.category}

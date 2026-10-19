@@ -513,7 +513,7 @@ h2 {
   margin-top: 20px;
 }
 .mission-copy > p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--muted);
   max-width: 425px;
@@ -589,7 +589,7 @@ h2 {
 }
 .section-heading > p {
   color: #bcc9c0;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.9;
   padding-right: 30px;
 }
@@ -672,7 +672,7 @@ h2 {
 }
 .callout-row {
   display: grid;
-  grid-template-columns: 160px 1fr auto;
+  grid-template-columns: 160px 112px 1fr auto;
   align-items: center;
   padding: 27px 8px 27px 0;
   gap: 28px;
@@ -680,6 +680,29 @@ h2 {
   transition:
     padding 0.2s,
     background 0.2s;
+}
+.callout-thumbnail {
+  position: relative;
+  display: block;
+  width: 112px;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border: 1px solid #d4d8ce;
+  background: #dfe3d8;
+}
+.callout-thumbnail img {
+  object-fit: cover;
+}
+.callout-thumbnail > span {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 3px 5px;
+  color: white;
+  background: #20362fce;
+  font-size: 7px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
 }
 .callout-row:hover {
   background: #eceee5;
@@ -737,7 +760,7 @@ h2 {
   margin-top: 20px;
 }
 .involvement-copy > p {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.9;
   margin-top: 22px;
@@ -796,7 +819,7 @@ h2 {
   margin-top: 20px;
 }
 .support-banner-copy > p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.85;
   max-width: 370px;
   color: #fae6dd;
@@ -927,7 +950,7 @@ h2 {
   white-space: pre-line;
 }
 .page-intro p {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   color: var(--muted);
   max-width: 590px;
@@ -973,7 +996,7 @@ h2 {
   margin: 28px 0 14px;
 }
 .prose p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.9;
   margin-bottom: 20px;
@@ -987,7 +1010,7 @@ h2 {
 .prose ul {
   padding-left: 20px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.9;
   list-style-type: disc;
   margin-bottom: 26px;
@@ -1010,7 +1033,7 @@ h2 {
   margin: 15px 0 20px;
 }
 .panel > p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.8;
   color: var(--muted);
 }
@@ -1043,12 +1066,12 @@ h2 {
   margin: 0 0 7px;
 }
 .info-list p {
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
   margin: 0;
 }
 .info-list a {
-  font-size: 12px;
+  font-size: 14px;
   overflow-wrap: anywhere;
 }
 .emergency-panel {
@@ -1078,7 +1101,7 @@ h2 {
 }
 .emergency-panel p {
   max-width: 520px;
-  font-size: 12px;
+  font-size: 14px;
   color: #6f6058;
   line-height: 1.7;
   margin-top: 12px;
@@ -1108,7 +1131,7 @@ h2 {
   letter-spacing: -1px;
 }
 .support-card p {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--muted);
   line-height: 1.9;
   margin: 20px 0 25px;
@@ -1275,7 +1298,7 @@ h2 {
   margin-top: 24px;
 }
 .news-card p {
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.8;
   color: var(--muted);
   margin: 20px 0;
@@ -1613,7 +1636,7 @@ h2 {
     width: 19px;
   }
   .mission-copy > p {
-    font-size: 13px;
+    font-size: 15px;
     max-width: 100%;
   }
   .mission-image {
@@ -1631,7 +1654,7 @@ h2 {
     margin-bottom: 28px;
   }
   .section-heading > p {
-    font-size: 12px;
+    font-size: 14px;
   }
   .section-heading > p br {
     display: none;
@@ -1664,9 +1687,13 @@ h2 {
     gap: 13px;
   }
   .callout-row {
-    grid-template-columns: 70px 1fr 20px;
+    grid-template-columns: 70px 56px 1fr 20px;
     gap: 14px;
     padding-block: 22px;
+  }
+  .callout-thumbnail {
+    width: 56px;
+    aspect-ratio: 1;
   }
   .callout-date time {
     font-size: 21px;
@@ -1789,7 +1816,7 @@ h2 {
     font-size: 58px;
   }
   .page-intro p {
-    font-size: 13px;
+    font-size: 15px;
   }
   .content-grid {
     grid-template-columns: 1fr;
@@ -1800,7 +1827,7 @@ h2 {
   }
   .prose p,
   .prose ul {
-    font-size: 13px;
+    font-size: 15px;
   }
   .panel {
     padding: 27px;

@@ -3,6 +3,31 @@ export const donationUrl =
   "https://www.justgiving.com/charity/dartmooresearchandrescue";
 export const sourceUrl = "https://dsrt-tavistock.org.uk";
 
+export const aboutContent = [
+  {
+    heading: "Our purpose",
+    paragraphs: [
+      "Dartmoor Search and Rescue Team – Tavistock helps the police and partner rescue services find missing people, provide appropriate care and bring them to safety.",
+      "We’re often called when someone is missing in poor weather or their location is unknown. Our volunteers train in advanced first aid, navigation, search techniques, radio communications and other skills needed to work in challenging conditions.",
+    ],
+  },
+  {
+    heading: "How we started",
+    paragraphs: [
+      "The Dartmoor Rescue Group was formed in Tavistock in April 1968 to help the police provide an effective search and rescue service on Dartmoor and in other remote places.",
+      "The teams originally operated as one charity. They later became self-governing and took the name Dartmoor Search and Rescue Team, followed by their home base. The Dartmoor Rescue Group continues as an executive committee, overseeing liaison between the four sister teams in Tavistock, Ashburton, Okehampton and Plymouth.",
+      "DSRT – Tavistock is part of the Peninsular Mountain and Cave Rescue Association (PenMaCRA) and Mountain Rescue England and Wales. While Dartmoor is served by the four local teams, police may call on us across Devon and Cornwall.",
+    ],
+  },
+  {
+    heading: "Working with other agencies",
+    paragraphs: [
+      "Search and rescue is a team effort. We work with the police, ambulance and fire and rescue services, HM Coastguard, the RNLI and neighbouring mountain rescue teams. This close cooperation helps bring the right people and resources together when someone is missing or injured.",
+      "When conditions allow, the Air Ambulance or National Police Air Service helicopter may help search for or evacuate an injured person. Dartmoor weather can make flying impossible. When that happens, people and search dogs on the ground are essential—often working through mist, darkness and rain.",
+    ],
+  },
+];
+
 export const joinUsContent = {
   intro: {
     eyebrow: "Join the team",

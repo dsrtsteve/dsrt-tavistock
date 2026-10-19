@@ -114,22 +114,15 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
             </div>
           );
 
-          return Number(year) === currentYear ? (
-            <section
-              className="archive-year"
-              key={year}
-              aria-labelledby={`callouts-${year}`}
-            >
-              <h2 className="archive-year-title" id={`callouts-${year}`}>
-                {year} call-outs
-              </h2>
-              {list}
-            </section>
-          ) : (
+          return (
             <details
               className="archive-year archive-year-details"
               key={year}
-              open={!!query || category !== "All call-outs"}
+              open={
+                Number(year) === currentYear ||
+                !!query ||
+                category !== "All call-outs"
+              }
             >
               <summary>
                 {year} call-outs

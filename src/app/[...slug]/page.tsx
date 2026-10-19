@@ -42,7 +42,7 @@ const titles: Record<string, string> = {
   "support-us/supporters-team": "Supporters team",
   contact: "Contact",
   "11tors": "11 Tors Challenge",
-  "the-meavy-book-by-peter-swaine": "Books for the team",
+  books: "Books for the team",
   privacy: "Privacy & image credits",
 };
 
@@ -222,7 +222,7 @@ export default async function ContentPage({ params }: Props) {
           </div>
           <div className="mt-14 flex flex-wrap gap-8">
             <TextLink href="/11tors">Discover the 11 Tors Challenge</TextLink>
-            <TextLink href="/the-meavy-book-by-peter-swaine">
+            <TextLink href="/books">
               Books that support the team
             </TextLink>
           </div>
@@ -440,13 +440,11 @@ export default async function ContentPage({ params }: Props) {
                 ))}
               </div>
               <p className="mt-7">
-                For other enquiries, please use the{" "}
+                For other enquiries, email our secretary at{" "}
                 <a
-                  href="https://dsrt-tavistock.org.uk/contact/"
-                  target="_blank"
-                  rel="noreferrer"
+                  href="mailto:secretary@dsrt-tavistock.org.uk"
                 >
-                  team’s existing contact form
+                  secretary@dsrt-tavistock.org.uk
                 </a>{" "}
                 or write to the Rescue Centre.
               </p>
@@ -529,7 +527,7 @@ export default async function ContentPage({ params }: Props) {
       </>
     );
 
-  if (path === "the-meavy-book-by-peter-swaine")
+  if (path === "books")
     return (
       <>
         <PageIntro
@@ -575,16 +573,14 @@ export default async function ContentPage({ params }: Props) {
                 explore the Meavy Valley in a 130-page hardback.
               </p>
               <p>
-                The published price is £25 including UK postage. Visit the
-                original book page for the team’s purchase options.
+                The published price is £25 including UK postage. Contact the
+                team to confirm availability and arrange a purchase.
               </p>
               <a
-                href={`${sourceUrl}/the-meavy-book-by-peter-swaine/`}
-                target="_blank"
-                rel="noreferrer"
-                className="button button-outline"
+                href="mailto:Books@dsrt-tavistock.org.uk?subject=Meavy%20Book%20enquiry"
+                className="button button-red"
               >
-                View purchase options <ArrowUpRight size={16} />
+                Enquire about Meavy Book <ArrowUpRight size={16} />
               </a>
             </article>
           </div>

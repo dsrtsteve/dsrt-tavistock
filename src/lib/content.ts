@@ -84,7 +84,7 @@ export const supportersTeamContent = {
     "Selling team merchandise.",
   ],
   suitabilityHeading: "Got what it takes?",
-  suitabilityIntroduction: "Do you:",
+  suitabilityIntroduction: "Do you meet the following criteria:",
   suitability: [
     "Live near Tavistock and have some spare time?",
     "Love Dartmoor?",

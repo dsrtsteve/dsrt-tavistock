@@ -364,7 +364,7 @@ export function Footer() {
             <Link href="/support-us/join-us">Join the team</Link>
             <Link href="/support-us/supporters-team">Become a supporter</Link>
             <Link href="/11tors">11 Tors Challenge</Link>
-            <Link href="/the-meavy-book-by-peter-swaine">
+            <Link href="/books">
               Books for the team
             </Link>
           </div>

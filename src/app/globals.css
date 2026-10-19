@@ -559,10 +559,8 @@ h2 {
 }
 .image-stamp {
   position: absolute;
-  bottom: 46px;
-  left: -28px;
-  background: var(--cream);
-  border: 1px solid #fff;
+  top: 20px;
+  right: 20px;
   width: 122px;
   height: auto;
   padding: 10px;
@@ -571,7 +569,6 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 12px #00000009;
 }
 .image-stamp img {
   width: 100%;
@@ -1442,6 +1439,16 @@ h2 {
   font-size: 10px;
   margin-top: 15px;
   color: var(--muted);
+}
+.footer-address > span > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: inherit;
+  white-space: nowrap;
+}
+.footer-address > span > a:hover {
+  color: var(--red);
 }
 .back-top {
   display: flex;

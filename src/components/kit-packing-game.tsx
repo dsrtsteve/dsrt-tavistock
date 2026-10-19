@@ -8,7 +8,6 @@ import {
   Compass,
   Flashlight,
   HeartPulse,
-  PackageCheck,
   Phone,
   Sandwich,
   Thermometer,

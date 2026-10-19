@@ -378,7 +378,15 @@ export function Footer() {
               Devon, PL19 9FD
             </p>
             <span>
-              <MapPin size={14} /> Dartmoor, Devon
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=The+Rescue+Centre%2C+Abbey+Rise%2C+Tavistock%2C+Devon%2C+PL19+9FD"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Find The Rescue Centre on Google Maps"
+              >
+                <MapPin size={14} />
+                Tavistock, Devon
+              </a>{" "}
             </span>
             <a href="#main-content" className="back-top">
               Back to top <ArrowDown className="rotate-180" size={15} />

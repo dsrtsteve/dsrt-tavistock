@@ -24,6 +24,7 @@ import {
   SupportBanner,
   TextLink,
 } from "@/components/site";
+import { FindWalkerGame } from "@/components/find-walker-game";
 import {
   aboutContent,
   donationUrl,
@@ -113,6 +114,7 @@ export default async function ContentPage({ params }: Props) {
           description="Rescue takes a whole team. Our volunteers train in navigation, communications and search, with specialists ready for the challenges beyond."
         />
         <SkillsSection full />
+        <FindWalkerGame />
         <SupportBanner />
       </>
     );

@@ -17,6 +17,7 @@ import {
 } from "@/components/site";
 import { getPublishedCallouts } from "@/lib/posts";
 import { mediaUrl, postDate } from "@/lib/post-utils";
+import { KitPackingGame } from "@/components/kit-packing-game";
 
 export const dynamic = "force-dynamic";
 
@@ -76,6 +77,7 @@ export default async function Home() {
       <Stats />
       <Mission />
       <SkillsSection />
+      <KitPackingGame />
       <section className="site-container section-space callouts-home">
         <div className="section-heading">
           <div>

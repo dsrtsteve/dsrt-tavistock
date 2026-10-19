@@ -19,7 +19,7 @@ export function FindWalkerGame() {
       setFound(true);
       setFeedback("You found the walker! The team has their location and can head in to help.");
     } else {
-      setFeedback("Not quite. Look for the stream crossing on the main footpath, in the middle section of the map.");
+      setFeedback("Not quite. Follow the clues to work out where the walker could have ended up.");
     }
   }
 

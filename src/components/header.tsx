@@ -152,9 +152,9 @@ export function Header() {
               </Link>
             ))}
             <p>
-              Here for Dartmoor.
+              Saving lives in wild
               <br />
-              Here for you.
+              and remote places.
             </p>
           </nav>
         )}

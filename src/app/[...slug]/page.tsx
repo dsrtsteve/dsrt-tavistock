@@ -72,8 +72,8 @@ export default async function ContentPage({ params }: Props) {
       <>
         <PageIntro
           eyebrow="Our team"
-          title={"For the moor.\nFor each other."}
-          description="A shared love of Dartmoor. A commitment to be there when someone needs us. Meet the purpose behind the people in red."
+          title={"Your local Mountain\nRescue Team."}
+          description="A shared love of Dartmoor. A commitment to be there when someone needs us. Explore the story behind the people in red."
           image
         />
         <Stats />

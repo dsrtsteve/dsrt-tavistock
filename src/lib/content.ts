@@ -31,7 +31,7 @@ export const aboutContent = [
 export const joinUsContent = {
   intro: {
     eyebrow: "Join the team",
-    title: "Your skills.\nSomeone’s second chance.",
+    title: "Join the team.\nMake a difference.",
     description:
       "Love Dartmoor? Confident on the hill? Turn your outdoor experience into something that makes a difference.",
   },

@@ -247,6 +247,10 @@ h2 {
   flex-direction: column;
   align-items: flex-start;
 }
+.site-header .brand-type {
+  align-items: center;
+  text-align: center;
+}
 .brand-type strong {
   font-size: 21px;
   font-weight: 850;

@@ -168,7 +168,7 @@ export function SkillsSection({ full = false }: { full?: boolean }) {
           <p>
             When the call comes, we’re ready.
             <br /> Specialist training. Shared commitment.
-            <br /> Whatever the terrain.
+            <br /> Whatever the situation.
           </p>
         </div>
         <div className={`skills-grid ${full ? "skills-grid-full" : ""}`}>
@@ -323,9 +323,9 @@ export function Footer() {
               </span>
             </Link>
             <p>
-              Local people. Lifesaving work.
+              Saving lives in wild
               <br />
-              Here when you need us.
+              and remote places.
             </p>
             <div className="social-links">
               <a

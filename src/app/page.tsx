@@ -40,11 +40,11 @@ export default async function Home() {
             <span className="live-dot" /> ON CALL 24 HOURS A DAY. EVERY DAY.
           </span>
           <h1>
-            WHATEVER
+            SAVING LIVES
             <br />
-            THE WEATHER.
+            IN WILD AND
             <br />
-            <span>WE’RE THERE.</span>
+            <span>REMOTE PLACES</span>
           </h1>
           <p>
             For the lost. For the injured. For anyone in need.

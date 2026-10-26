@@ -25,6 +25,7 @@ import {
   TextLink,
 } from "@/components/site";
 import { FindWalkerGame } from "@/components/find-walker-game";
+import { SkillGallery } from "@/components/skill-gallery";
 import {
   aboutContent,
   donationUrl,
@@ -48,6 +49,48 @@ const titles: Record<string, string> = {
 };
 
 type Props = { params: Promise<{ slug: string[] }> };
+
+const skillPhotos: Record<string, { src: string; alt: string; width: number; height: number }[]> = {
+  "medical-team": [
+    { src: "/images/rrmt/cas-care.jpg", alt: "Remote rescue medical team caring for a casualty", width: 4000, height: 3000 },
+    { src: "/images/rrmt/cas-site.jpg", alt: "Remote rescue medical team caring for a casualty", width: 2522, height: 1989 },
+    { src: "/images/rrmt/packaging.jpg", alt: "Casualty being prepared for evacuation", width: 2756, height: 2067 },
+    { src: "/images/rrmt/inside-kisu.jpg", alt: "Casualty inside the team's KISU shelter", width: 3000, height: 4000 },
+  ],
+  "search-dogs": [
+    { src: "/images/sarda/dog-find.JPG", alt: "Search dog locating a missing person", width: 4000, height: 3000 },
+    { src: "/images/sarda/dog-handler.jpg", alt: "Search dog handler working with their dog", width: 4032, height: 3024 },
+    { src: "/images/sarda/dog-in-team.jpg", alt: "Search dog working alongside the rescue team", width: 4080, height: 3072 },
+    { src: "/images/sarda/dog-pose.jpg", alt: "Mountain rescue search dog", width: 3024, height: 4032 },
+    { src: "/images/sarda/dog-reward.jpg", alt: "Search dog receiving a reward during training", width: 4032, height: 3024 },
+  ],
+  "ropes-team": [
+    { src: "/images/ropes/abseil.jpg", alt: "A team member practices ropes skills", width: 3024, height: 4032 },
+    { src: "/images/ropes/anchor-vehicle.jpg", alt: "Rescue rope system anchored to a vehicle", width: 4000, height: 3000 },
+    { src: "/images/ropes/bridge.jpg", alt: "Rope rescue training on a bridge", width: 924, height: 2000 },
+    { src: "/images/ropes/lowering.jpg", alt: "Lowering a casualty during a rope rescue", width: 1536, height: 2048 },
+    { src: "/images/ropes/ropes-1.jpg", alt: "Team members during a technical rope rescue", width: 3000, height: 4000 },
+    { src: "/images/ropes/stretcher-rope.jpg", alt: "Stretcher being moved using a rope system", width: 4032, height: 3024 },
+  ],
+  "swift-water-rescue": [
+    { src: "/images/water/boat-cas.jpg", alt: "Rescue team moving a casualty by boat", width: 3024, height: 4032 },
+    { src: "/images/water/boat-right.JPG", alt: "Capsize drills being practiced on the water", width: 2508, height: 1672 },
+    { src: "/images/water/live-bait.jpg", alt: "Swift water rescue live bait technique", width: 4032, height: 2688 },
+    { src: "/images/water/rescue.jpg", alt: "Rescuers practicing in open water", width: 2801, height: 2025 },
+    { src: "/images/water/tether-raft.jpg", alt: "Rescue team using a tethered raft", width: 3797, height: 2539 },
+    { src: "/images/water/training-dive.jpg", alt: "Water rescue training in the Tavy river", width: 3360, height: 2240 },
+  ],
+  hasties: [
+    { src: "/images/hasty/hastys.jpg", alt: "Hasty team members running into action", width: 2362, height: 1772 },
+  ],
+  "4x4-drivers": [
+    { src: "/images/vehicles/53-old-63.jpg", alt: "Landrover 53 and the former Landrover 63", width: 4000, height: 3000 },
+    { src: "/images/vehicles/53-sunset.jpg", alt: "Landrover 53 on Dartmoor at sunset", width: 4032, height: 3024 },
+    { src: "/images/vehicles/63-points.jpg", alt: "Hilux off-road rescue vehicle", width: 4032, height: 2268 },
+    { src: "/images/vehicles/63-merlin.jpg", alt: "63 beside a Navy Merlin helicopter", width: 4000, height: 3000 },
+    { src: "/images/vehicles/old-63.jpg", alt: "Former 63 off-road rescue vehicle", width: 3024, height: 4032 },
+  ],
+};
 
 export function generateStaticParams() {
   return [
@@ -162,6 +205,12 @@ export default async function ContentPage({ params }: Props) {
               call-out takes them into challenging terrain.
             </p>
             <TextLink href="/team-skills">Explore all team skills</TextLink>
+            {skillPhotos[skill.slug] ? (
+              <SkillGallery
+                photos={skillPhotos[skill.slug]}
+                label={`${skill.title} photos`}
+              />
+            ) : null}
           </div>
           <aside className="panel">
             <Eyebrow>HELP US STAY READY</Eyebrow>

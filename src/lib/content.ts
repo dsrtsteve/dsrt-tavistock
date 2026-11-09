@@ -49,20 +49,22 @@ export const joinUsContent = {
   ],
   training:
     "Trainee training takes approximately a year. It covers navigation, first aid, communications, technical rope and water rescue, welfare, working with search dogs and other agencies, searching and vehicles. Once they have gained sufficient training and experience, trainees are invited to a Final Assessment to demonstrate their competence in the skills they’ve learned. Successful candidates become badged Hill Party Members (HPMs).",
-  recruitmentHeading: "Recruitment for the 2027 intake.",
-  recruitment:
+  recruitmentHeading: "Recruitment is currently closed.",
+  recruitment: "Our recruitment window for 2028 will open in Autumn 2027. In the meantime you can consider joining our Support Team, additional help is always needed and it's a great way to get involved.",
+  recruitmentDay: "",
+  recruitmentHidden:
     "We are now recruiting for our next intake of Trainee HPMs in 2027. Applications close on 31 October 2026. After the closing date, we’ll select candidates for a recruitment day based solely on the information in their application. Please take time to include as much relevant information as possible. Successful candidates at this stage will receive an invitation by email in early November 2026.",
-  recruitmentDay:
+  recruitmentDayHidden:
     "The recruitment day will take place on Saturday 21 November 2026, from 10:00 to 16:00. Successful candidates will start training in January 2027. The invitation email will include details of the day.",
   supportersLink: "Explore the Supporters Team",
   application: {
-    eyebrow: "2027 TRAINEE INTAKE",
+    eyebrow: "2028 TRAINEE INTAKE",
     heading: "Apply to join the team.",
     description:
-      "Complete the application form by 31 October 2026. Your application is the basis for selecting candidates to attend the recruitment day.",
+      "Our next recruitment window opens in Autumn 2027. Consider joining our Support Team in the meantime.",
     label: "DSRT-T Application Form",
     href: "https://forms.gle/ZTdAKfAeaRtgygyC6",
-    note: "The recruitment day is Saturday 21 November 2026. Training for successful candidates begins in January 2027.",
+    note: "Recruitment is currently closed. Our application form for the 2028 will open in Autumn 2027.",
   },
 };
 

@@ -76,3 +76,12 @@ Search indexing is disabled in `src/app/layout.tsx` while this is a preview. Bef
 ## Dependency audit
 
 The production dependency audit (`npm audit --omit=dev`) reports zero vulnerabilities. The full audit reports five inherited development-tool advisories in the ESLint → fast-glob → micromatch → braces chain. The registry’s latest braces release (3.0.3) has no fix for the reported deeply nested pattern denial-of-service issue. The suggested forced fix would downgrade the Next.js lint configuration by two major versions, so it has not been applied. Sharp was updated to 0.35.5 to resolve its reported advisories.
+
+
+## Admin users
+
+The protected team workspace includes `/admin/users`, backed by the `profiles` table. Apply the migration in `supabase/migrations/20261117143600_admin_user_roles.sql` to the intended Supabase project before using this page. The migration is committed for review and has not been applied here.
+
+When login ships, replace `requireAdmin()` with a session check and switch the repository to the user-scoped Supabase client so RLS enforces access. The current page reuses the existing authenticated admin workspace and never exposes a service-role key.
+
+The role migration backfills existing Supabase accounts and preserves existing `admin_users` members as administrators. Staff can read all profiles; ordinary users can read only their own profile. Role changes are protected by a database trigger. Review the policies and run the RLS integration checks against a disposable Supabase project before applying to production.

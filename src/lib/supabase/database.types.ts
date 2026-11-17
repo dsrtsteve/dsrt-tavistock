@@ -7,6 +7,7 @@ export type PostCategory =
   | "Team News"
   | "Fundraising";
 export type PostStatus = "draft" | "published" | "archived";
+export type AppRole = "admin" | "staff" | "user";
 
 export type BlogPost = {
   id: string;
@@ -33,6 +34,12 @@ export type BlogPost = {
 export type Database = {
   public: {
     Tables: {
+      profiles: {
+        Row: { id: string; name: string | null; email: string; image: string | null; status: "active" | "inactive" | "pending"; role: AppRole; created_at: string };
+        Insert: { id: string; name?: string | null; email: string; image?: string | null; status?: "active" | "inactive" | "pending"; role?: AppRole; created_at?: string };
+        Update: { name?: string | null; email?: string; image?: string | null; status?: "active" | "inactive" | "pending"; role?: AppRole };
+        Relationships: [];
+      };
       blog_posts: {
         Row: BlogPost;
         Insert: Pick<

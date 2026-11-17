@@ -81,3 +81,29 @@ using ((select public.has_role('staff'::public.app_role)));
 create policy "Users read their own profile"
 on public.profiles for select to authenticated
 using (id = (select auth.uid()));
+
+
+-- Keep the directory complete for accounts created after this migration.
+create function public.create_profile_for_auth_user()
+returns trigger
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  insert into public.profiles (id, email, status, role)
+  values (
+    new.id,
+    coalesce(new.email, ''),
+    case when new.email_confirmed_at is null then 'pending' else 'active' end,
+    'user'::public.app_role
+  )
+  on conflict (id) do update
+    set email = excluded.email;
+  return new;
+end;
+$$;
+revoke all on function public.create_profile_for_auth_user() from public, anon, authenticated;
+create trigger create_profile_after_auth_signup
+after insert on auth.users
+for each row execute function public.create_profile_for_auth_user();

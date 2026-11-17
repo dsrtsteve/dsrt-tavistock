@@ -1863,6 +1863,41 @@ h2 {
 .archive-year-details > .journal-grid {
   margin-top: 20px;
 }
+.archive-month + .archive-month {
+  margin-top: 20px;
+}
+.archive-month-details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  border-block: 1px solid var(--line);
+  color: var(--forest);
+  font-size: 16px;
+  font-weight: 500;
+  list-style: none;
+}
+.archive-month-details > summary::-webkit-details-marker {
+  display: none;
+}
+.archive-month-details > summary::after {
+  content: "+";
+  color: var(--red);
+  font-size: 18px;
+}
+.archive-month-details[open] > summary::after {
+  content: "−";
+}
+.archive-month-details > summary span {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 400;
+}
+.archive-month-details > .callout-list {
+  margin-top: 16px;
+}
 .empty-state {
   padding: 60px 25px;
   text-align: center;

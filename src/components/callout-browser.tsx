@@ -19,6 +19,19 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
         .includes(query.trim().toLowerCase()),
   );
   const currentYear = new Date().getFullYear();
+
+  // Calculate last 3 months for default expansion
+  const getLastThreeMonths = () => {
+    const months = [];
+    const now = new Date();
+    for (let i = 0; i < 3; i++) {
+      const date = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      months.push(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`);
+    }
+    return months;
+  };
+  const lastThreeMonths = getLastThreeMonths();
+
   const years = [
     ...new Set(results.map((post) => post.event_date.slice(0, 4))),
   ].sort((a, b) => Number(b) - Number(a));
@@ -57,62 +70,9 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
       {results.length ? (
         years.map((year) => {
           const yearPosts = results.filter((post) => post.event_date.startsWith(year));
-          const list = (
-            <div className="callout-list">
-              {yearPosts.map((item) => (
-                <Link
-                  className="callout-row"
-                  href={`/blog/${item.slug}`}
-                  key={item.id}
-                >
-                  <div className="callout-date">
-                    <time dateTime={item.event_date}>
-                      {postDate(item.event_date)}
-                    </time>
-                    <span>
-                      {item.incident_number
-                        ? `INCIDENT ${item.incident_number}`
-                        : "RESCUE REPORT"}
-                    </span>
-                  </div>
-                  <span className="callout-thumbnail">
-                    {item.cover_path ? (
-                      <Image
-                        unoptimized
-                        src={mediaUrl(item.cover_path)}
-                        alt={item.cover_alt ?? ""}
-                        fill
-                        sizes="(max-width: 767px) 56px, 112px"
-                      />
-                    ) : (
-                      <>
-                        <Image
-                          src="/images/dartmoor-rescue-hero.webp"
-                          alt=""
-                          fill
-                          sizes="(max-width: 767px) 56px, 112px"
-                        />
-                        <span>Illustration</span>
-                      </>
-                    )}
-                  </span>
-                  <div className="callout-row-content">
-                    <span className="callout-category">
-                      {item.category}
-                    </span>
-                    <h3>{item.title}</h3>
-                    <span className="callout-place">
-                      <MapPin size={13} />
-                      {item.location}
-                    </span>
-                  </div>
-                  <span className="callout-read">
-                    Read report <ArrowUpRight size={20} />
-                  </span>
-                </Link>
-              ))}
-            </div>
-          );
+          const months = [
+            ...new Set(yearPosts.map((post) => post.event_date.slice(0, 7))),
+          ].sort((a, b) => b.localeCompare(a));
 
           return (
             <details
@@ -130,7 +90,85 @@ export function CalloutBrowser({ posts }: { posts: BlogPost[] }) {
                   {yearPosts.length} {yearPosts.length === 1 ? "report" : "reports"}
                 </span>
               </summary>
-              {list}
+              <div className="callout-list">
+                {months.map((month) => {
+                  const monthPosts = yearPosts.filter((post) => post.event_date.startsWith(month));
+                  const monthName = new Date(month + "-01").toLocaleDateString("en-GB", { month: "long" });
+
+                  return (
+                    <details
+                      className="archive-month archive-month-details"
+                      key={month}
+                      open={
+                        lastThreeMonths.includes(month) ||
+                        !!query ||
+                        category !== "All call-outs"
+                      }
+                    >
+                      <summary>
+                        {monthName} {year}
+                        <span>
+                          {monthPosts.length} {monthPosts.length === 1 ? "report" : "reports"}
+                        </span>
+                      </summary>
+                      <div className="callout-list">
+                        {monthPosts.map((item) => (
+                          <Link
+                            className="callout-row"
+                            href={`/blog/${item.slug}`}
+                            key={item.id}
+                          >
+                            <div className="callout-date">
+                              <time dateTime={item.event_date}>
+                                {postDate(item.event_date)}
+                              </time>
+                              <span>
+                                {item.incident_number
+                                  ? `INCIDENT ${item.incident_number}`
+                                  : "RESCUE REPORT"}
+                              </span>
+                            </div>
+                            <span className="callout-thumbnail">
+                              {item.cover_path ? (
+                                <Image
+                                  unoptimized
+                                  src={mediaUrl(item.cover_path)}
+                                  alt={item.cover_alt ?? ""}
+                                  fill
+                                  sizes="(max-width: 767px) 56px, 112px"
+                                />
+                              ) : (
+                                <>
+                                  <Image
+                                    src="/images/dartmoor-rescue-hero.webp"
+                                    alt=""
+                                    fill
+                                    sizes="(max-width: 767px) 56px, 112px"
+                                  />
+                                  <span>Illustration</span>
+                                </>
+                              )}
+                            </span>
+                            <div className="callout-row-content">
+                              <span className="callout-category">
+                                {item.category}
+                              </span>
+                              <h3>{item.title}</h3>
+                              <span className="callout-place">
+                                <MapPin size={13} />
+                                {item.location}
+                              </span>
+                            </div>
+                            <span className="callout-read">
+                              Read report <ArrowUpRight size={20} />
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </details>
+                  );
+                })}
+              </div>
             </details>
           );
         })

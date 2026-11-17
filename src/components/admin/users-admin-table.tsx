@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { Search, ChevronDown, ChevronLeft, ChevronRight, MoreHorizontal, SlidersHorizontal, X, Eye, Pencil, Trash2 } from "lucide-react";
 import { deleteUserAccount, updateUserProfile } from "@/app/admin/(workspace)/users/actions";
@@ -29,6 +29,28 @@ export function UsersAdminTable({ users, canManage }: Props) {
   const [dialog, setDialog] = useState<DialogState>(null);
   const [feedback, setFeedback] = useState("");
   const [isPending, startTransition] = useTransition();
+
+  // Close any open row action menu when the user clicks elsewhere or presses Escape.
+  useEffect(() => {
+    function closeMenus(event: MouseEvent) {
+      if (event.target instanceof Element && event.target.closest(".users-actions")) return;
+      document.querySelectorAll<HTMLDetailsElement>(".users-actions[open]").forEach((menu) => {
+        menu.open = false;
+      });
+    }
+    function closeMenusOnEscape(event: KeyboardEvent) {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll<HTMLDetailsElement>(".users-actions[open]").forEach((menu) => {
+        menu.open = false;
+      });
+    }
+    document.addEventListener("click", closeMenus);
+    document.addEventListener("keydown", closeMenusOnEscape);
+    return () => {
+      document.removeEventListener("click", closeMenus);
+      document.removeEventListener("keydown", closeMenusOnEscape);
+    };
+  }, []);
 
   const filtered = useMemo(() => users.filter((user) => {
     const term = search.trim().toLowerCase();

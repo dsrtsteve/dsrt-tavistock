@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, LogOut, PenLine } from "lucide-react";
+import { ArrowUpRight, LogOut, PenLine, Users } from "lucide-react";
 import { requireAdmin } from "@/lib/auth";
 import { logout } from "../actions";
 
@@ -23,6 +23,9 @@ export default async function AdminLayout({
             <PenLine size={20} /> Team workspace
           </Link>
           <div className="workspace-links">
+            <Link href="/admin/users">
+              <Users size={14} /> Users
+            </Link>
             <Link href="/blog">
               View journal <ArrowUpRight size={14} />
             </Link>

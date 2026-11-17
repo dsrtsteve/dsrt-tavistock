@@ -37,12 +37,12 @@ export async function updateUserProfile(form: FormData): Promise<{ error?: strin
   }
 
   const { data: target, error: targetError } = await admin.supabase
-    .from("profiles").select("id, role").eq("id", id).maybeSingle();
+    .from("profiles").select("id, role, status").eq("id", id).maybeSingle();
   if (targetError || !target) return { error: "That user could not be found." };
 
-  if (target.role === "admin" && role !== "admin") {
+  if (target.role === "admin" && (role !== "admin" || status !== "active")) {
     const { count, error } = await admin.supabase
-      .from("profiles").select("id", { count: "exact", head: true }).eq("role", "admin");
+      .from("profiles").select("id", { count: "exact", head: true }).eq("role", "admin").eq("status", "active");
     if (error || (count ?? 0) <= 1) return { error: "The last administrator cannot be demoted." };
   }
 
@@ -64,7 +64,7 @@ export async function deleteUserAccount(id: string): Promise<{ error?: string; s
   if (id === admin.user.id) return { error: "You cannot delete your own administrator account." };
 
   const { data: target, error: targetError } = await admin.supabase
-    .from("profiles").select("id, role, email").eq("id", id).maybeSingle();
+    .from("profiles").select("id, role, status, email").eq("id", id).maybeSingle();
   if (targetError || !target) return { error: "That user could not be found." };
 
   if (target.role === "admin") {

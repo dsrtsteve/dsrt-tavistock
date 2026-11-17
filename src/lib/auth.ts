@@ -17,7 +17,13 @@ export async function getAdmin() {
     .eq("user_id", user.id)
     .maybeSingle();
   if (roleError || !admin) return null;
-  return { user, supabase };
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .maybeSingle();
+  if (profileError || !profile) return null;
+  return { user, supabase, role: profile.role };
 }
 
 export async function requireAdmin() {

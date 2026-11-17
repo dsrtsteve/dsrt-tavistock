@@ -112,7 +112,7 @@ export function UsersAdminTable({ users, canManage }: Props) {
             <label>Name<input name="name" defaultValue={dialog.user.name ?? ""} maxLength={100} placeholder="Full name" /></label>
             <label>Email<input value={dialog.user.email} disabled readOnly /><small>Email address changes are managed through Supabase Auth and are not editable here.</small></label>
             <label>Role<select name="role" defaultValue={dialog.user.role}>{ROLE_OPTIONS.map((value) => <option key={value} value={value}>{value[0].toUpperCase() + value.slice(1)}</option>)}</select></label>
-            <label>Account status<select name="status" defaultValue={dialog.user.status}>{STATUS_OPTIONS.map((value) => <option key={value} value={value}>{value[0].toUpperCase() + value.slice(1)}</option>)}</select></label>
+            <label>Directory status<select name="status" defaultValue={dialog.user.status}>{STATUS_OPTIONS.map((value) => <option key={value} value={value}>{value[0].toUpperCase() + value.slice(1)}</option>)}</select></label>
             {feedback && <p className="users-dialog-error" role="alert">{feedback}</p>}
             <footer><button type="button" className="users-secondary-button" onClick={closeDialog} disabled={isPending}>Cancel</button><button type="submit" className="button button-red" disabled={isPending}>{isPending ? "Saving…" : "Save changes"}</button></footer>
           </form>}

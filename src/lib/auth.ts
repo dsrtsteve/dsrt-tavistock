@@ -11,18 +11,14 @@ export async function getAdmin() {
     error,
   } = await supabase.auth.getUser();
   if (error || !user) return null;
-  const { data: admin, error: roleError } = await supabase
-    .from("admin_users")
-    .select("user_id")
-    .eq("user_id", user.id)
-    .maybeSingle();
-  if (roleError || !admin) return null;
   const { data: profile, error: profileError } = await supabase
     .from("profiles")
     .select("role")
     .eq("id", user.id)
     .maybeSingle();
-  if (profileError || !profile) return null;
+  // The profiles role is the canonical authorisation source after the role migration.
+  // Existing admin_users entries are backfilled to role='admin' by that migration.
+  if (profileError || profile?.role !== "admin") return null;
   return { user, supabase, role: profile.role };
 }
 

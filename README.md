@@ -76,3 +76,15 @@ Search indexing is disabled in `src/app/layout.tsx` while this is a preview. Bef
 ## Dependency audit
 
 The production dependency audit (`npm audit --omit=dev`) reports zero vulnerabilities. The full audit reports five inherited development-tool advisories in the ESLint → fast-glob → micromatch → braces chain. The registry’s latest braces release (3.0.3) has no fix for the reported deeply nested pattern denial-of-service issue. The suggested forced fix would downgrade the Next.js lint configuration by two major versions, so it has not been applied. Sharp was updated to 0.35.5 to resolve its reported advisories.
+
+
+## Admin users
+
+The protected team workspace includes `/admin/users`, backed by the `profiles` table. Apply the migration in `supabase/migrations/20261117143600_admin_user_roles.sql` to the intended Supabase project before using this page. The migration is committed for review and has not been applied here.
+
+When login ships, replace `requireAdmin()` with a session check and switch the repository to the user-scoped Supabase client so RLS enforces access. The current page reuses the existing authenticated admin workspace and never exposes a service-role key.
+
+The role migration backfills existing Supabase accounts and preserves existing `admin_users` members as administrators. Staff can read all profiles; ordinary users can read only their own profile. Role changes are protected by a database trigger. Review the policies and run the RLS integration checks against a disposable Supabase project before applying to production.
+
+
+User management supports a read-only Preview dialog, editing profile name / role / directory status, and permanent account deletion. Deletion uses Supabase Auth Admin and therefore requires a server-only Supabase secret key. Add `SUPABASE_SECRET_KEY` to the Vercel preview and production environment variables (or the legacy `SUPABASE_SERVICE_ROLE_KEY`); never prefix it with `NEXT_PUBLIC_` or commit it. The key bypasses RLS and is used only inside the server action. User email addresses are intentionally read-only in this editor. Directory status controls access to the protected admin workspace for administrator accounts; it does not disable the underlying Supabase sign-in. Deletion is blocked for the signed-in administrator and for the final remaining administrator.

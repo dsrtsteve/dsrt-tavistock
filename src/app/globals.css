@@ -2827,3 +2827,92 @@ h2 {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Admin users directory */
+.users-page { padding: 2.5rem 0 4rem; }
+.users-page-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; margin-bottom:1.75rem; }
+.users-page-heading h1 { margin:.35rem 0; font-size:clamp(2rem,4vw,2.8rem); letter-spacing:-.04em; }
+.users-page-heading p { color:var(--muted, #68736d); margin:0; }
+.users-total { display:inline-flex; align-items:center; gap:.5rem; padding:.6rem .85rem; border:1px solid #dfe4df; border-radius:999px; font-size:.9rem; }
+.users-table-card { overflow:visible; border:1px solid #e0e4df; border-radius:1rem; background:white; box-shadow:0 8px 30px #1d30240a; }
+.users-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; padding:1rem; border-bottom:1px solid #e9ece8; }
+.users-search,.users-role-filter { display:flex; align-items:center; gap:.55rem; min-height:2.65rem; padding:0 .8rem; border:1px solid #dfe4df; border-radius:.55rem; color:#66736b; }
+.users-search { flex:1 1 15rem; }
+.users-search input,.users-role-filter select { min-width:0; width:100%; border:0; outline:0; background:transparent; color:#27342c; }
+.users-role-filter select { min-width:7rem; }
+.users-columns,.users-actions { position:relative; }
+.users-columns summary,.users-actions summary { display:flex; align-items:center; gap:.4rem; cursor:pointer; list-style:none; }
+.users-columns summary { padding:.65rem .8rem; border:1px solid #dfe4df; border-radius:.55rem; font-size:.9rem; }
+.users-columns-menu,.users-actions>div { position:absolute; z-index:5; right:0; top:calc(100% + .4rem); display:grid; gap:.5rem; min-width:10rem; padding:.75rem; border:1px solid #dfe4df; border-radius:.65rem; background:white; box-shadow:0 12px 30px #1d30241c; }
+.users-columns-menu label { display:flex; gap:.5rem; align-items:center; font-size:.85rem; }
+.users-selection { display:flex; align-items:center; gap:1rem; padding:.65rem 1rem; background:#f6f8f5; font-size:.9rem; }
+.users-selection button { text-decoration:underline; }
+.users-table-scroll { overflow-x:auto; }
+.users-table { width:100%; border-collapse:collapse; text-align:left; font-size:.9rem; }
+.users-table th { padding:.85rem 1rem; color:#6a756d; font-size:.76rem; font-weight:650; letter-spacing:.04em; text-transform:uppercase; white-space:nowrap; background:#fafbf9; }
+.users-table td { padding:.9rem 1rem; border-top:1px solid #edf0ec; white-space:nowrap; }
+.users-sort { color:inherit; font:inherit; text-transform:inherit; }
+.users-person { display:flex; align-items:center; gap:.7rem; min-width:12rem; }
+.users-person>span:last-child { display:grid; gap:.15rem; }
+.users-person strong { color:#26332b; font-weight:650; }
+.users-person small { color:#778179; font-size:.76rem; }
+.users-person img,.users-avatar { width:2.35rem; height:2.35rem; border-radius:50%; object-fit:cover; }
+.users-avatar { display:grid; place-items:center; background:#e8eee8; color:#365044; font-size:.75rem; font-weight:700; }
+.users-muted { color:#69756d; }
+.users-role-badge,.users-status { display:inline-flex; align-items:center; padding:.3rem .6rem; border-radius:999px; font-size:.76rem; font-weight:650; text-transform:capitalize; }
+.role-admin { background:#fbe9e6; color:#a33329; }
+.role-staff { background:#e9f0e9; color:#315c43; }
+.role-user { background:#eef0f2; color:#59636d; }
+.status-active { background:#e8f4eb; color:#267342; }
+.status-inactive { background:#f0f1f1; color:#606a64; }
+.status-pending { background:#fff3dc; color:#946516; }
+.users-actions summary { padding:.3rem; }
+.users-actions>div button { padding:.35rem .5rem; text-align:left; font-size:.85rem; }
+.users-actions .danger { color:#b32d25; }
+.users-pagination { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1rem; border-top:1px solid #e9ece8; color:#69756d; font-size:.85rem; }
+.users-pagination>div { display:flex; align-items:center; gap:.8rem; }
+.users-pagination button { display:grid; place-items:center; width:2rem; height:2rem; border:1px solid #dfe4df; border-radius:.45rem; color:#35453b; }
+.users-pagination button:disabled { opacity:.35; cursor:not-allowed; }
+.users-empty,.users-empty-state { padding:3rem 1rem !important; text-align:center; color:#69756d; }
+.users-empty-state { display:grid; justify-items:center; gap:.6rem; border:1px dashed #d9e0d9; border-radius:1rem; }
+.users-empty-state h2,.users-empty-state p { margin:0; }
+.users-load-error { margin-top:1.5rem; padding:1rem; border:1px solid #f0c8c3; border-radius:.65rem; background:#fff5f3; color:#9b3027; }
+@media (max-width:640px) { .users-page-heading { align-items:flex-start; flex-direction:column; } .users-pagination { align-items:flex-start; flex-direction:column; } }
+
+
+/* User management dialogs and actions */
+.users-actions>div button { display:flex; align-items:center; gap:.55rem; width:100%; padding:.55rem .6rem; border-radius:.4rem; white-space:nowrap; }
+.users-actions>div button:hover { background:#f3f6f2; }
+.users-actions>div .danger:hover { background:#fff0ee; }
+.users-feedback { margin:0 0 1rem; padding:.8rem 1rem; border-radius:.55rem; background:#edf6ee; color:#28623a; }
+.users-dialog-backdrop { position:fixed; inset:0; z-index:100; display:grid; place-items:center; overflow-y:auto; padding:1.25rem; background:#101a14a8; }
+.users-dialog { width:min(100%, 34rem); max-height:min(90vh, 52rem); overflow-y:auto; border:1px solid #e0e5df; border-radius:1rem; background:white; box-shadow:0 24px 80px #0003; }
+.users-dialog>header { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.1rem 1.35rem; border-bottom:1px solid #e9ece8; }
+.users-dialog>header h2 { margin:0; font-size:1.3rem; letter-spacing:-.02em; }
+.users-dialog>header>button { display:grid; place-items:center; width:2.2rem; height:2.2rem; border-radius:.45rem; }
+.users-dialog>header>button:hover { background:#f0f3ef; }
+.users-preview,.users-edit-form,.users-delete-confirm { display:grid; gap:1.15rem; padding:1.35rem; }
+.users-preview-person { display:flex; align-items:center; gap:.85rem; }
+.users-preview-person img,.users-preview-person .users-avatar { width:3.25rem; height:3.25rem; border-radius:50%; object-fit:cover; }
+.users-preview-person>div { display:grid; gap:.25rem; }
+.users-preview-person strong { font-size:1.05rem; }
+.users-preview-person>div span { color:#69756d; font-size:.9rem; }
+.users-preview dl { display:grid; gap:0; margin:0; }
+.users-preview dl>div { display:grid; grid-template-columns:8rem minmax(0,1fr); align-items:center; gap:1rem; padding:.75rem 0; border-top:1px solid #edf0ec; }
+.users-preview dt { color:#69756d; font-size:.88rem; }
+.users-preview dd { margin:0; font-size:.9rem; overflow-wrap:anywhere; }
+.users-id { font-family:monospace; font-size:.78rem !important; }
+.users-edit-form>label { display:grid; gap:.45rem; color:#344238; font-size:.9rem; font-weight:600; }
+.users-edit-form input,.users-edit-form select { width:100%; min-height:2.8rem; padding:.65rem .75rem; border:1px solid #dce3dc; border-radius:.5rem; background:white; color:#26332b; font:inherit; font-weight:400; }
+.users-edit-form input:disabled { background:#f4f6f3; color:#6b756e; }
+.users-edit-form small { color:#758078; font-size:.78rem; font-weight:400; }
+.users-preview footer,.users-edit-form footer,.users-delete-confirm footer { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:.65rem; padding-top:.6rem; }
+.users-secondary-button,.users-delete-button { min-height:2.65rem; padding:.6rem .9rem; border:1px solid #dce3dc; border-radius:.5rem; font-size:.9rem; font-weight:600; }
+.users-secondary-button:hover { background:#f5f7f4; }
+.users-delete-button { border-color:#b52f27; background:#b52f27; color:white; }
+.users-delete-button:hover { background:#96251f; }
+.users-dialog-error { margin:0; padding:.7rem .8rem; border:1px solid #f0c8c3; border-radius:.5rem; background:#fff5f3; color:#9b3027; font-size:.88rem; }
+.users-delete-confirm>p { margin:0; line-height:1.6; }
+.users-delete-warning { padding:.8rem; border-radius:.5rem; background:#fff5e5; color:#875b14; font-size:.85rem; }
+@media (max-width:480px) { .users-dialog-backdrop { padding:.6rem; } .users-dialog { max-height:94vh; } .users-preview dl>div { grid-template-columns:6.5rem minmax(0,1fr); } }

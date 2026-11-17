@@ -28,7 +28,7 @@ export default async function AdminUsersPage() {
         <span className="users-total"><Users size={17} /> {users.length} {users.length === 1 ? "user" : "users"}</span>
       </div>
       {users.length === 0 ? <div className="users-empty-state"><UserPlus size={28} /><h2>No users yet</h2><p>Profiles will appear here when accounts are provisioned.</p></div> :
-        <UsersAdminTable users={users} canManage={admin.role === "admin"} />}
+        <UsersAdminTable users={users} canManage={true} />}
     </section>
   );
 }

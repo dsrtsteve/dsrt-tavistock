@@ -273,7 +273,7 @@ h2 {
   line-height: 1;
 }
 .brand-type small {
-  font-size: 10px;
+  font-size: 19px;
   letter-spacing: 3.1px;
   margin-top: 7px;
   line-height: 1;
@@ -2404,7 +2404,7 @@ h2 {
     letter-spacing: 0.95px;
   }
   .brand-type small {
-    font-size: 8.5px;
+    font-size: 14px;
     letter-spacing: 2.5px;
     margin-top: 5px;
   }
@@ -2678,7 +2678,7 @@ h2 {
     font-size: 11px;
   }
   .footer-brand .brand-type small {
-    font-size: 10px;
+    font-size: 19px;
   }
   .footer-top > div > p {
     margin-top: 16px;

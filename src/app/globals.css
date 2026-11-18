@@ -245,12 +245,19 @@ h2 {
 .brand-type {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
 }
-.site-header .brand-type {
-  align-items: center;
-  text-align: center;
+.brand-type strong {
+  display: flex;
+  justify-content: space-between;
+  width: max-content;
+}
+.brand-type > span,
+.brand-type small {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  white-space: nowrap;
 }
 .brand-type strong {
   font-size: 21px;
@@ -259,14 +266,14 @@ h2 {
   line-height: 1;
 }
 .brand-type > span {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 750;
   letter-spacing: 1.35px;
   margin-top: 5px;
   line-height: 1;
 }
 .brand-type small {
-  font-size: 8px;
+  font-size: 19px;
   letter-spacing: 3.1px;
   margin-top: 7px;
   line-height: 1;
@@ -2393,11 +2400,11 @@ h2 {
     letter-spacing: 1.1px;
   }
   .brand-type > span {
-    font-size: 8px;
+    font-size: 9px;
     letter-spacing: 0.95px;
   }
   .brand-type small {
-    font-size: 7px;
+    font-size: 14px;
     letter-spacing: 2.5px;
     margin-top: 5px;
   }
@@ -2668,10 +2675,10 @@ h2 {
     font-size: 21px;
   }
   .footer-brand .brand-type > span {
-    font-size: 10px;
+    font-size: 11px;
   }
   .footer-brand .brand-type small {
-    font-size: 8px;
+    font-size: 19px;
   }
   .footer-top > div > p {
     margin-top: 16px;

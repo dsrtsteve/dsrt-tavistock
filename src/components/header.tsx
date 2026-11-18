@@ -89,9 +89,9 @@ export function Header() {
               preload
             />
             <span className="brand-type">
-              <strong>DARTMOOR</strong>
-              <span>SEARCH & RESCUE</span>
-              <small>TAVISTOCK</small>
+              <strong aria-label="DARTMOOR">{Array.from("DARTMOOR", (char, i) => <span key={i} aria-hidden="true">{char}</span>)}</strong>
+              <span aria-label="SEARCH & RESCUE">{Array.from("SEARCH & RESCUE", (char, i) => <span key={i} aria-hidden="true">{char === " " ? "\u00a0" : char}</span>)}</span>
+              <small aria-label="TAVISTOCK">{Array.from("TAVISTOCK", (char, i) => <span key={i} aria-hidden="true">{char}</span>)}</small>
             </span>
           </Link>
           <nav className="desktop-nav" aria-label="Main navigation">

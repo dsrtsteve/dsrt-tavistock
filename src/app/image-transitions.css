@@ -1,0 +1,19 @@
+/* Subtle entrance for raster images as they are added to the page. The animation is deliberately short so it never delays interaction. */
+@keyframes image-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+img {
+  animation: image-fade-in 380ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img {
+    animation: none;
+  }
+}

@@ -1,0 +1,20 @@
+/*
+ * Keep images invisible only until their resource is ready, then reveal them
+ * with a short fade. The shared ImageFadeIn listener adds image-loaded on load.
+ */
+img {
+  opacity: 0;
+}
+
+img.image-loaded {
+  opacity: 1;
+  transition: opacity 380ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img,
+  img.image-loaded {
+    opacity: 1;
+    transition: none;
+  }
+}

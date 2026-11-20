@@ -543,16 +543,33 @@ export default async function ContentPage({ params }: Props) {
           <div className="prose">
             <h2>One moor. A shared adventure.</h2>
             <p>
-              The 11 Tors Challenge brings walkers together to explore Dartmoor
-              and raise funds for the team.
+              The 11 Tors Challenge is a community-driven walking event across the
+              striking landscape of Dartmoor, organised and run by us, the volunteers
+              of Dartmoor Search and Rescue Team Tavistock.
+            </p>
+            <p>
+              This is a self navigated walk is designed to be inclusive and enjoyable for
+              all levels of walkers, from families to seasoned adventurers. The event
+              offers a chance to explore some of the moor’s most beautiful and remote
+              areas in a safe, well-supported environment. A choice of routes covering
+              varying distances means everyone can take up the challenge.  
+            </p>
+            <p>
+              It’s more than just a walk—it's a celebration of Dartmoor, a fundraiser 
+              for vital local services, and a fantastic day out in one of the UK's most
+              iconic wild spaces.
+            </p>
+            <p>
+              Remember, as is always the case when heading out for a day on Dartmoor, you
+              will need to bring the essentials for an adventure. Some navigation tools, 
+              warm clothing, snacks and a drink, and some good waterproofs!
             </p>
             <p>
               The 2026 event on 19 September, was a great success raising vital 
               funds for the team. 
             </p>
             <p>
-              For information about future events, contact the organisers. We’ll
-              only list a new date once it has been confirmed by the team.
+              Details of our next event will be posted here and on Social Media when we have it confirmed.
             </p>
           </div>
           <aside className="panel">
@@ -569,8 +586,7 @@ export default async function ContentPage({ params }: Props) {
               Contact the event team <ArrowUpRight size={17} />
             </a>
             <p className="panel-note">
-              2026 event date has passed. No future registration is offered on
-              this site.
+              2026 event date has passed. No future registration is currently available.
             </p>
           </aside>
         </section>

@@ -4,6 +4,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/site";
 import { AuthInviteCapture } from "@/components/auth-invite-capture";
 import { ImageFadeIn } from "@/components/image-fade-in";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import "./journal.css";
 import "./image-transitions.css";
@@ -47,6 +48,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
